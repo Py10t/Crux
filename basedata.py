@@ -14,31 +14,28 @@ class Stammdaten:
         
         self.name = 0
         
-        #customer
+#customer
         self.address = 0
         self.email = 0 
         
-        #article
-        self.interneBez = 0
-        self.externeBez = 0
-        self.weight = 0
+#article
+        self.intID = 0
+        self.extID = 0
+        #amount right now produced on the machine
         self.manufacturing = 0
-        self.zufertigen = 0
+        #tbm = to be manufactured like still waiting or left for a deadline
+        self.tbm = 0
+        #ppc = price per 100
         self.ppcent = 0
+        #mincost = calculated minimum
         self.mincost = 0
+        self.weight = 0
+        #dimensions should lead to a drawing or something like that
         self.dimensions = 0
+        #material should be linked to a material in db
         self.material = 0
         self.stock = 0
         
-        #material
+#material
         self.company = 0
         self.price = 0
-        
-        
-class Employee:
-    
-    
-    def __init__(self, first, last, pay):
-        self.first = first
-        self.last = last
-        self.pay = pay

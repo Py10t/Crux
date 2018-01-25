@@ -7,11 +7,13 @@ Created on Thu Aug 17 21:50:14 2017
 
 from tkinter import *
 import stuff
+import os
+from Zeichnungen import *
 
 
 def newdata():
     
-    print ('...loading: newdata())') 
+    print ('...loading: newdata() button box') 
     
     box = Tk()
     box.geometry("300x100")
@@ -19,12 +21,18 @@ def newdata():
 # Button for new customers
     box.insertButt = Button(box, text="Customer")
     box.insertButt.pack()
-    box.insertButt.config(command=lambda: [stuff.newcustomer(), box.destroy()])
+    box.insertButt.config(command=lambda: [stuff.newcustomerbox(), box.destroy()])
     
 # Button for new articles    
     box.insertButt2 = Button(box, text="Article")
     box.insertButt2.pack()
-    box.insertButt2.config(command=lambda: [doSomething(), box.destroy()])
+    box.insertButt2.config(command=lambda: [stuff.newarticlebox(), box.destroy()])
+    
+# Button for new material
+    box.insertButt3 = Button(box, text="Material")
+    box.insertButt3.pack()
+    box.insertButt3.config(command=lambda: [stuff.newmaterialbox(), box.destroy()])
+
     
 def doNothing():
     print(toplvl.x)
@@ -37,23 +45,37 @@ def doSomething():
 # Button for new customers
     newcustomerButton = Button(toplvl.rframe, text="New Customer")
     newcustomerButton.pack()
-    newcustomerButton.config(command=lambda: [stuff.newcustomer(), toplvl.rframe.destroy()])
+    newcustomerButton.config(command=lambda: [stuff.newcustomerbox()])
     
 # Button for loading customers
     toplvl.rframe.insertButt = Button(toplvl.rframe, text="Show Customers")
     toplvl.rframe.insertButt.pack()
-    toplvl.rframe.insertButt.config(command=lambda: [showdb()])
+    toplvl.rframe.insertButt.config(command=lambda: [displaydb()])
     
-def showdb():
-    
-    print ('...loading: showdb()') 
+def opensomething():
+    os.startfile(Zeichnungen/asdf.jpg)
 
-    lst = stuff.startmodule([1])    
+    
+def displaydb():
+#iterates through a list retrieved from db and displays it in rframe
+    
+    print ('...loading: showdb()')
+    
+#    newButton = Button(toplvl.rframe, text="Zeichnung")
+#    newButton.pack()
+#    newButton.config(command=lambda: [stuff.newcustomerbox()])
+
+    lst = stuff.startmodule([1, '2P GmbH'])
+  
     dbentry = Text(toplvl.rframe)
+       
     for x in lst:
         dbentry.insert(END, str(x) + '\n')
+    
     dbentry.pack()
     
+    print ('db listed in rframe')
+
 
 class Crux:
     
@@ -93,7 +115,7 @@ class Crux:
         self.toolbar = Frame(master, bg="grey")
         self.insertButt = Button(self.toolbar, text="New(Demo)", command=newdata)
         self.insertButt.pack(side=LEFT, padx=2, pady=2)
-        self.printButt = Button(self.toolbar, text="Print", command= lambda: [stuff.startmodule([1])])
+        self.printButt = Button(self.toolbar, text="Print", command=displaydb)
         self.printButt.pack(side=LEFT, padx=2, pady=2)
         self.toolbar.pack(side=TOP, fill=X)
 
@@ -126,12 +148,7 @@ class Crux:
         
 
 
-        
-
-    
-
-    
-    
+   
 #def start_gui():
     #global val, w, root
 root = Tk()

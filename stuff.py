@@ -15,26 +15,34 @@ def startmodule(x):
     print ('...loading: startmodule()')
         
     optionX = x[0]
-    optDict = {1 : getting_a_list,
+    optDict = {1 : coredb.get_stuff_by_type,
                2 : article,
                3 : material,
                }
-    return optDict[optionX]('2P GmbH')
+    return optDict[optionX](x[0], x[1])
 
 
-def getting_a_list(somethingGud):
-    return coredb.get_stuff_by_name(somethingGud)
+def getting_a_list(xlst):
+#    customer = [1,2,3]
+#    articles = [1,4,5,6,7,10]
+#    material = [1,10,11,12]
     
+    #this returns tuples with a list
+    return coredb.get_stuff_by_type(xlst)
+
 
 def herewego(x):
 # x number of entries, y = choice in decider box
-    storage = x
+    print ('...loading: herewego module')
     global newstuff 
     newstuff = basedata.Stammdaten()
-
     chooser(x)
-    
-    coredb.insert_stuff(newstuff)
+    optionX = x[0]
+    optDict = {1 : coredb.insert_newcustomer,
+               2 : coredb.insert_newarticle,
+               3 : coredb.insert_newmaterial,
+               }
+    optDict[optionX](newstuff)
     
     print ("Le FIN")
     
@@ -61,31 +69,37 @@ def customer(data):
     newstuff.address = data[2]
     newstuff.email = data[3]
 
-def article():
+def article(data):
     
     print ('...loading: article()') 
     
-    newstuff.interneBez = 0
-    newstuff.externeBez = 0
-    newstuff.weight = 0
-    newstuff.manufacturing = 0
-    newstuff.zufertigen = 0
-    newstuff.ppcent = 0
-    newstuff.mincost = 0
-    newstuff.dimensions = 0
-    newstuff.material = 0
-    newstuff.stock = 0
+    newstuff.name = data[1]
+    newstuff.intID = data[2]
+    newstuff.extID = data[3]
+#    newstuff.manufacturing = 
+#    newstuff.tbm = 
+    newstuff.ppcent = data[4]
+#    newstuff.mincost = ]
+    newstuff.weight = data[5]
+#    newstuff.dimensions = 
+    newstuff.material = data[6]
+#    newstuff.stock = 
     
-def material():
+def material(data):
     
-    print ("-bdata/material")
+    print ('...loading: material()')
     
-    newstuff.company = 0
-    newstuff.price = 0
+    newstuff.name = data[1]
+    newstuff.company = data[2]
+    newstuff.price = data[3]
 
-def newcustomer():
+
+"""***                        -ENTRY BOXES-                           ***"""
+
+
+def newcustomerbox():
     
-    print ('-new customer input box')
+    print ('...loading: new customer input box')
     
     box = Tk()
     box.geometry("600x300")
@@ -114,7 +128,7 @@ def newcustomer():
     
     emailE = Entry(box)
     emailE.delete(0, END)
-    emailE.insert(0, 1300)
+    emailE.insert(0, "peterdermeter@gmx.de")
     emailE.grid(row=3, column=1)
     
     #OK Button
@@ -126,38 +140,111 @@ def newcustomer():
                                          herewego(x), box.destroy()])
     
 
-def newarticle():
+def newarticlebox():
     
-    print ('new article input box')
+    print ('...loading: new article input box')
     
     box = Tk()
     box.geometry("600x300")
-    # x = 2 für article in Stammdaten
-    x = 2
+    # x[0] = 2 für article in Stammdaten
+    x = [2]
     
     #Labels
-    nameL = Label(box, text='Article Name: ')
+    nameL = Label(box, text='Article Type: ')
     nameL.grid(row=1, column=0, sticky=E)
-    dimensionsL = Label(box, text='Product dimensions: ')
-    dimensionsL.grid(row=2, column=0, sticky=E)
+    intIDL  = Label(box, text='internal ID: ')
+    intIDL.grid(row=2, column=0, sticky=E)
+    extIDL  = Label(box, text='External ID: ')
+    extIDL.grid(row=3, column=0, sticky=E)
+    ppcL  = Label(box, text='Price (/100 parts): ')
+    ppcL.grid(row=4, column=0, sticky=E)
+    weightL  = Label(box, text='Weight (in gr.): ')
+    weightL.grid(row=5, column=0, sticky=E)
     materialL = Label(box, text='Material: ')
-    materialL.grid(row=3, column=0, sticky=E)
-    stockL = Label(box, text='Stock: ')
-    stockL.grid(row=4, column=0, sticky=E)
+    materialL.grid(row=6, column=0, sticky=E)
     
     #Entry boxes
     nameE = Entry(box)
+    nameE.delete(0, END)
+    nameE.insert(0, "Stopfen")
     nameE.grid(row=1, column=1)
-    dimensionsE = Entry(box)
-    dimensionsE.grid(row=2, column=1)
+    
+    intIDE = Entry(box)
+    intIDE.delete(0, END)
+    intIDE.insert(0, "1337")
+    intIDE.grid(row=2, column=1)
+
+    extIDE = Entry(box)
+    extIDE.delete(0, END)
+    extIDE.insert(0, "Z192")
+    extIDE.grid(row=3, column=1)
+    
+    ppcE = Entry(box)
+    ppcE.delete(0, END)
+    ppcE.insert(0, 6.80)
+    ppcE.grid(row=4, column=1)
+    
+    weightE = Entry(box)
+    weightE.delete(0, END)
+    weightE.insert(0, 25.7)
+    weightE.grid(row=5, column=1)
+    
     materialE = Entry(box)
-    materialE.grid(row=3, column=1)
-    stockE = Entry(box)
-    stockE.grid(row=4, column=1)
+    materialE.delete(0, END)
+    materialE.insert(0, "PTFE")
+    materialE.grid(row=6, column=1)
     
     #OK Button
     insertButt = Button(box, text="Confirm")
-    insertButt.grid(row=5, column=0)
-    insertButt.config(command=lambda: [box.destroy()])
-    #company = Stammdaten.Stammdaten(nameE.get())
+    insertButt.grid(row=7, column=0)
+    insertButt.config(command = lambda: [x.append(nameE.get()), 
+                                         x.append(intIDE.get()),
+                                         x.append(extIDE.get()),
+                                         x.append(ppcE.get()),
+                                         x.append(weightE.get()),
+                                         x.append(materialE.get()),
+                                         herewego(x), box.destroy()])
+
+    
+def newmaterialbox():
+    
+    print ('...loading: new materialinput box')
+    
+    box = Tk()
+    box.geometry("600x300")
+    
+    # x[0] = 3 for new material in db
+    x = [3]
+    
+    #Labels
+    nameL = Label(box, text='Material Name: ')
+    nameL.grid(row=1, column=0, sticky=E)
+    c_nameL = Label(box, text='Company Name: ')
+    c_nameL.grid(row=2, column=0, sticky=E)
+    priceL = Label(box, text='Price (per kg): ')
+    priceL.grid(row=3, column=0, sticky=E)
+    
+    #Entry boxes
+    nameE = Entry(box)
+    nameE.delete(0, END)
+    nameE.insert(0, "PTFE")
+    nameE.grid(row=1, column=1)
+    
+    c_nameE = Entry(box)
+    c_nameE.delete(0, END)
+    c_nameE.insert(0, "Google Inc.")
+    c_nameE.grid(row=2, column=1)
+    
+    priceE = Entry(box)
+    priceE.delete(0, END)
+    priceE.insert(0, 16.82)
+    priceE.grid(row=3, column=1)
+    
+    #OK Button
+    insertButt = Button(box, text="Confirm")
+    insertButt.grid(row=4, column=0)
+    insertButt.config(command = lambda: [x.append(nameE.get()), 
+                                         x.append(c_nameE.get()),
+                                         x.append(priceE.get()),
+                                         herewego(x), box.destroy()])
     
