@@ -10,6 +10,7 @@ import stuff
 import os
 from Zeichnungen import *
 import basedata
+from tkinter import filedialog
 
 
 class Enginedisplayer:
@@ -28,8 +29,27 @@ class Enginedisplayer:
         StartL = Label(engineframe, text='Start (d/m/y - time) : ')
         StartL.grid(row=3, column=0, sticky=E)
         EndL = Label(engineframe, text='End (d/m/y - time) : ')
-        EndL.grid(row=4, column=0, sticky=E)
-
+        EndL.grid(row=5, column=0, sticky=E)
+        
+        StatusL2 = Label(engineframe, text='Online', fg="green")
+        StatusL2.grid(row=1, column=1, sticky=E)
+        Article2 = Label(engineframe, text='3K - 380248')
+        Article2.grid(row=2, column=1, sticky=E)
+        StartL2 = Label(engineframe, text='30.03.2018')
+        StartL2.grid(row=3, column=1, sticky=E)
+        StartL3 = Label(engineframe, text='8:00')
+        StartL3.grid(row=4, column=1, sticky=E)
+        EndL2 = Label(engineframe, text='05.04.2018')
+        EndL2.grid(row=5, column=1, sticky=E)
+        EndL2 = Label(engineframe, text='18:00')
+        EndL2.grid(row=6, column=1, sticky=E)
+        
+        button = Button(engineframe, text = "Open TD", command = self.openfile)
+        button.grid(column = 0, row = 0)
+        
+    def openfile(self):
+        return filedialog.askopenfilename()
+        
 def display_engines():
     
     print ('...loading: display_machines')
