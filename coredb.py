@@ -120,34 +120,40 @@ def insert_newmaterial(emp):
     print ('...loading: insert_newstuff()')
     
     with conn:
-       c.execute("""INSERT INTO dbmaterials VALUES (:name, :address, :email, :intID, :extID, :weight, :ppcent, :mincost, :dimensions, :material, :company, :price)""", 
+       c.execute("""INSERT INTO dbmaterials VALUES (:name, :intID, :material, :company, :price)""", 
                  {
                 'name': emp.name,
                 'intID': emp.intID,
                 'material': emp.material,
                 'company': emp.company,
                 'price': emp.price
-                })    
-       
-#def get_stuff_by_type(searchobject):
-#    
-#    print ('...loading: get_stuff_by_type()')
-#    
-#    c.execute("SELECT * FROM coredatabase1 WHERE type=:type", {'type': searchobject})
-#    return c.fetchall()
+                })
+
+#    customer = [1,2,3]
+#    articles = [1,4,5,6,7,10]
+#    material = [1,10,11,12]
 
     
-def get_stuff_by_type(x, searchobject):
+def get_stuff_by_type(x):
     
     print ('...loading: get_stuff_by_type()')
-    optDict = {1 : 'dbcustomers',
-               2 : 'dbarticles',
-               3 : 'dbmaterials',
-               }
-    dbname = optDict[x]
-    c.execute("SELECT * FROM dbcustomers WHERE name=:name", {'name': searchobject})
-    return c.fetchall()
-
+    
+    print (x)
+    displayed = []    
+    if x[0] == 1:
+        print ('x[0]=1')
+        c.execute("SELECT * FROM dbcustomers WHERE name=:name", {'name': x[1]})
+        displayed = c.fetchall()
+    elif x[0] == 2:
+        print ('x[0]=2')
+        c.execute("SELECT * FROM dbarticles WHERE name=:name", {'name': x[1]})
+        displayed = c.fetchall()
+    elif x[0] == 3:
+        print ('x[0]=3')
+        c.execute("SELECT * FROM dbmaterials WHERE name=:name", {'name': x[1]})
+        displayed = c.fetchall()
+        
+    return displayed
        
 #def get_stuff_by_name(searchobject):
 #    
@@ -156,15 +162,38 @@ def get_stuff_by_type(x, searchobject):
 #    c.execute("SELECT * FROM coredatabase1 WHERE name=:name", {'name': searchobject})
 #    return c.fetchall()
     
+#***###################################################***#
+def get_everything(x):
+    optionX = x[1]
+    optDict = {1 : get_all_customers,
+               2 : get_all_articles,
+               3 : get_all_materials,
+               }
+    return optDict[optionX]()
 
-def get_everything():
+def get_all_customers():
     
-    print ('...loading: get_everything()') 
+    print ('...loading: get_all_customers()') 
     
-    c.execute("SELECT * FROM coredatabase1")
-    print (c.fetchall())
+    c.execute("SELECT * FROM dbcustomers")
+    return (c.fetchall())
 
+def get_all_articles():
+    
+    print ('...loading: get_all_articles()') 
+    
+    c.execute("SELECT * FROM dbarticles")
+    return (c.fetchall())
 
+def get_all_materials():
+    
+    print ('...loading: get_all_materials()') 
+    
+    c.execute("SELECT * FROM dbmaterials")
+    return (c.fetchall())
+
+#***###################################################***#
+    
 def update_pay(emp, pay):
     with conn:
         c.execute("""UPDATE employees SET pay = :pay

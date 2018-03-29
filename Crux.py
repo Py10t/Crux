@@ -9,70 +9,83 @@ from tkinter import *
 import stuff
 import os
 from Zeichnungen import *
+import basedata
 
 
-def newdata():
+class Enginedisplayer:
     
-    print ('...loading: newdata() button box') 
+    def __init__(self):
+        
+        engineframe = Toplevel(toplvl.mainframe)
+        engineframe.geometry("300x400")
+        engineframe.title("Engine 1")
     
-    box = Tk()
-    box.geometry("300x100")
+        #Labels
+        StatusL = Label(engineframe, text='Engine Status : ')
+        StatusL.grid(row=1, column=0, sticky=E)
+        ArticleL = Label(engineframe, text='Article : ')
+        ArticleL.grid(row=2, column=0, sticky=E)
+        StartL = Label(engineframe, text='Start (d/m/y - time) : ')
+        StartL.grid(row=3, column=0, sticky=E)
+        EndL = Label(engineframe, text='End (d/m/y - time) : ')
+        EndL.grid(row=4, column=0, sticky=E)
 
-# Button for new customers
-    box.insertButt = Button(box, text="Customer")
-    box.insertButt.pack()
-    box.insertButt.config(command=lambda: [stuff.newcustomerbox(), box.destroy()])
+def display_engines():
     
-# Button for new articles    
-    box.insertButt2 = Button(box, text="Article")
-    box.insertButt2.pack()
-    box.insertButt2.config(command=lambda: [stuff.newarticlebox(), box.destroy()])
+    print ('...loading: display_machines')
     
-# Button for new material
-    box.insertButt3 = Button(box, text="Material")
-    box.insertButt3.pack()
-    box.insertButt3.config(command=lambda: [stuff.newmaterialbox(), box.destroy()])
-
+    box = Enginedisplayer()
     
 def doNothing():
     print(toplvl.x)
     
-
-def doSomething():
+def newdata():
     
-    print ('...loading: doSomething()') 
+    print ('...loading: newdata() button box')
+    
+    w = "First box"
+    x = ["Customer", "Article", "Material"]
+    y = [stuff.newcustomerbox, stuff.newarticlebox, stuff.newmaterialbox]
+    newbox = basedata.Basic_box(w, x, y)
+    
+def newstockbuttons():
+    
+    print ('...loading: newstockbuttons()')
+    
+    w = "Second box"
+    x = ["Customer", "Article", "Material"]
+    y = [lambda: displaydb([2, 1]), lambda: displaydb([2, 2]), lambda: displaydb([2, 3])]
+    newbox = basedata.Basic_box(w, x, y)
+
+
+def displayframe():
+# ***** Right frame ****
         
-# Button for new customers
-    newcustomerButton = Button(toplvl.rframe, text="New Customer")
-    newcustomerButton.pack()
-    newcustomerButton.config(command=lambda: [stuff.newcustomerbox()])
-    
-# Button for loading customers
-    toplvl.rframe.insertButt = Button(toplvl.rframe, text="Show Customers")
-    toplvl.rframe.insertButt.pack()
-    toplvl.rframe.insertButt.config(command=lambda: [displaydb()])
-    
-def opensomething():
-    os.startfile(Zeichnungen/asdf.jpg)
+        
+        toplvl.displayframe = Frame(toplvl.mainframe)
+        toplvl.displayframe.pack(fill=Y, expand=True)
+        toplvl.displayframe.place(relx=0.47, rely=0.01, relheight=0.98, relwidth=0.53)
+        toplvl.displayframe.configure(relief=GROOVE)
+        toplvl.displayframe.configure(background="#000000")
+        toplvl.displayframe.configure(highlightbackground="#000000")
+        toplvl.displayframe.configure(highlightcolor="black")
 
-    
-def displaydb():
+
+def displaydb(x):
 #iterates through a list retrieved from db and displays it in rframe
     
     print ('...loading: showdb()')
     
-#    newButton = Button(toplvl.rframe, text="Zeichnung")
-#    newButton.pack()
-#    newButton.config(command=lambda: [stuff.newcustomerbox()])
-
-    lst = stuff.startmodule([1, '2P GmbH'])
-  
-    dbentry = Text(toplvl.rframe)
+    lst = stuff.startmodule(x)
+    
+    displayframe()
+    
+    dbdisplay = Text(toplvl.displayframe)
        
     for x in lst:
-        dbentry.insert(END, str(x) + '\n')
+        dbdisplay.insert(END, str(x) + '\n')
     
-    dbentry.pack()
+    dbdisplay.pack()
     
     print ('db listed in rframe')
 
@@ -113,10 +126,14 @@ class Crux:
 
 
         self.toolbar = Frame(master, bg="grey")
-        self.insertButt = Button(self.toolbar, text="New(Demo)", command=newdata)
+        self.insertButt = Button(self.toolbar, text="New(Demo)", command=lambda:[newdata()])
         self.insertButt.pack(side=LEFT, padx=2, pady=2)
-        self.printButt = Button(self.toolbar, text="Print", command=displaydb)
+        self.printButt = Button(self.toolbar, text="Search", command=lambda:[stuff.newsearchbox1()])
         self.printButt.pack(side=LEFT, padx=2, pady=2)
+        self.stockButt = Button(self.toolbar, text="Stock", command=lambda:[newstockbuttons()])
+        self.stockButt.pack(side=LEFT, padx=2, pady=2)
+        self.machinesButt = Button(self.toolbar, text="Engines", command=lambda:[display_engines()])
+        self.machinesButt.pack(side=LEFT, padx=2, pady=2)
         self.toolbar.pack(side=TOP, fill=X)
 
 
@@ -138,15 +155,16 @@ class Crux:
 # ***** Right frame ****
         
         
-        self.rframe = Frame(self.mainframe)
-        self.rframe.pack(fill=Y, expand=True)
-        self.rframe.place(relx=0.47, rely=0.01, relheight=0.98, relwidth=0.53)
-        self.rframe.configure(relief=GROOVE)
-        self.rframe.configure(background="#000000")
-        self.rframe.configure(highlightbackground="#000000")
-        self.rframe.configure(highlightcolor="black")
+        self.displayframe = Frame()
+#        self.rframe = Frame(self.mainframe)
+#        self.rframe.pack(fill=Y, expand=True)
+#        self.rframe.place(relx=0.47, rely=0.01, relheight=0.98, relwidth=0.53)
+#        self.rframe.configure(relief=GROOVE)
+#        self.rframe.configure(background="#000000")
+#        self.rframe.configure(highlightbackground="#000000")
+#        self.rframe.configure(highlightcolor="black")
         
-
+        
 
    
 #def start_gui():

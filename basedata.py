@@ -4,7 +4,11 @@ Created on Fri Dec  8 10:52:49 2017
 
 @author: Andrasz
 """
+from tkinter import *
     
+    
+def doNothing():
+    print("do nothing")
     
 class Stammdaten:
 
@@ -39,3 +43,25 @@ class Stammdaten:
 #material
         self.company = 0
         self.price = 0
+        
+        
+class Basic_box:
+    
+    
+    def __init__(self, x_title, x_names, x_command):
+                
+        x = len(x_names)
+        y = "300x" + str(25+x*25)
+            
+        box = Tk()
+        box.geometry(y)
+        box.title("LuL")
+
+        names = x_names
+
+        for item in names:
+            box.insertButt = Button(box, text=item)
+            box.insertButt.pack()
+            x = x_command[names.index(item)]
+#            hier fehlt der .destroy command
+            box.insertButt.config(command = x_command[names.index(item)])

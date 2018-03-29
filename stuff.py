@@ -9,26 +9,41 @@ from tkinter import *
 import basedata
 import coredb
 
+#***###################################################***#
 def startmodule(x):
-    # optDict[] ruft eine der def() aus dem dict auf 
-        
+    
+#
+#-optDict[] ruft eine der def() aus dem dict auf
+#-newsearchbox looks like [1, searchobject, dbC 1/0, dbA 1/0, dbM 1/0]
+#
+    
     print ('...loading: startmodule()')
         
+    """newsearchbox looks like [1, searchobject, dbC 1/0, dbA 1/0, dbM 1/0]"""
     optionX = x[0]
-    optDict = {1 : coredb.get_stuff_by_type,
-               2 : article,
+    optDict = {1 : getting_a_list,
+               2 : coredb.get_everything,
                3 : material,
                }
-    return optDict[optionX](x[0], x[1])
+    print ('...Parameter: ', x)
+    return optDict[optionX](x)
+#***###################################################***#
 
 
 def getting_a_list(xlst):
-#    customer = [1,2,3]
-#    articles = [1,4,5,6,7,10]
-#    material = [1,10,11,12]
     
-    #this returns tuples with a list
-    return coredb.get_stuff_by_type(xlst)
+    print (xlst[1])
+    x = []
+    if xlst[2] == 1:
+        x.append(coredb.get_stuff_by_type([1, xlst[1]]))
+    
+    elif xlst[2] == 1:
+        x.append(coredb.get_stuff_by_type([2, xlst[1]]))
+    
+    elif xlst[2] == 1:
+        x.append(coredb.get_stuff_by_type([3, xlst[1]]))
+    print (x)
+    return x
 
 
 def herewego(x):
@@ -103,7 +118,7 @@ def newcustomerbox():
     
     box = Tk()
     box.geometry("600x300")
-    
+    box.title("New Customer")
     # x = list for data
     x = [1]
     
@@ -146,6 +161,7 @@ def newarticlebox():
     
     box = Tk()
     box.geometry("600x300")
+    box.title("New Article")
     # x[0] = 2 für article in Stammdaten
     x = [2]
     
@@ -212,6 +228,7 @@ def newmaterialbox():
     
     box = Tk()
     box.geometry("600x300")
+    box.title("New Material")
     
     # x[0] = 3 for new material in db
     x = [3]
@@ -248,3 +265,59 @@ def newmaterialbox():
                                          x.append(priceE.get()),
                                          herewego(x), box.destroy()])
     
+def newsearchbox1():
+    box = Tk()
+    toplvl = Checkbox(box)
+
+
+class Checkbox:
+    
+    def __init__(self, master):
+        
+        print ('...loading: new search box')
+        
+        self.x=[]
+        
+        master.geometry("600x300")
+        master.title("Weird Checkbox template")
+        
+        #Labels
+        self.searchL = Label(master, text='Search for: ')
+        self.searchL.grid(row=1, column=0, sticky=E)
+        self.searchL = Label(master, text='Check following DBs: ')
+        self.searchL.grid(row=3, column=0, sticky=E)
+        
+        #Entry boxes
+        self.searchE = Entry(master)
+        self.searchE.delete(0, END)
+        self.searchE.insert(0, "PTFE")
+        self.searchE.grid(row=2, column=1)
+        
+        #Checkbuttons
+        self.checkVar1 = IntVar(master)
+        checkbuttonC = Checkbutton(master, text = "Customers", variable = self.checkVar1)
+        checkbuttonC.grid(row=3, column=1,)
+        checkbuttonC.select()
+        
+        self.checkVar2 = IntVar(master)
+        checkbuttonA = Checkbutton(master, text = "Articles", variable = self.checkVar2)
+        checkbuttonA.grid(row=3, column=2,)
+        checkbuttonA.select()
+        
+        self.checkVar3 = IntVar(master)
+        self.checkbuttonM = Checkbutton(master, text = "Materials", variable = self.checkVar3)
+        self.checkbuttonM.grid(row=3, column=3,)
+        self.checkbuttonM.select()
+        
+        #Search Button
+        searchButt = Button(master, text="Confirm")
+        searchButt.grid(row=4, column=0)
+#        self.searchButt.config(command = lambda: [self.checkem(self.checkVar1.get(), self.checkVar2, self.checkVar2)])
+        searchButt.config(command = lambda: [self.checkem()])
+    
+    
+    def checkem(self):
+
+        print ("variable1 is ", self.checkVar1.get())
+        print ("variable2 is ", self.checkVar2.get())
+        print ("variable3 is ", self.checkVar3.get())
