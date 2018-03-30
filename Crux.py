@@ -13,6 +13,40 @@ import basedata
 from tkinter import filedialog
 
 
+class Machine_planning:
+    
+    def __init__(self):
+        
+        toplvl.displayframe = Frame(toplvl.mainframe)
+        toplvl.displayframe.pack(fill="both", expand=True)
+        toplvl.displayframe.configure(relief=GROOVE)
+        toplvl.displayframe.configure(background="#ffffff")
+        toplvl.displayframe.configure(highlightbackground="#000000")
+        toplvl.displayframe.configure(highlightcolor="black")
+        
+        separator6 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        separator6.pack(fill=X, padx=5, pady=5)
+        separator6.place(relx=0, rely=0.25, relwidth=1)
+        
+        separator12 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        separator12.pack(fill=X, padx=5, pady=5)
+        separator12.place(relx=0, rely=0.5, relwidth=1)
+        
+        separator18 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        separator18.pack(fill=X, padx=5, pady=5)
+        separator18.place(relx=0, rely=0.75, relwidth=1)
+        
+        separatorY = Frame(toplvl.displayframe, width=2, bd=1, relief=SUNKEN)
+        separatorY.pack(fill=Y, padx=5, pady=5)
+        separatorY.place(relx=0.05, rely=0.0, relhight=1)
+        
+def display_mp():
+    
+    print ('...loading: display_mp')
+    
+    new_frame = Machine_planning()
+    
+
 class Enginedisplayer:
     
     def __init__(self):
@@ -154,6 +188,8 @@ class Crux:
         self.stockButt.pack(side=LEFT, padx=2, pady=2)
         self.machinesButt = Button(self.toolbar, text="Engines", command=lambda:[display_engines()])
         self.machinesButt.pack(side=LEFT, padx=2, pady=2)
+        self.mpButt = Button(self.toolbar, text="MP", command=lambda:[display_mp()])
+        self.mpButt.pack(side=LEFT, padx=2, pady=2)
         self.toolbar.pack(side=TOP, fill=X)
 
 
