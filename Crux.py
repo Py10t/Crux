@@ -8,7 +8,6 @@ Created on Thu Aug 17 21:50:14 2017
 from tkinter import *
 import stuff
 import os
-from Zeichnungen import *
 import basedata
 from tkinter import filedialog
 
@@ -17,28 +16,145 @@ class Machine_planning:
     
     def __init__(self):
         
+        toplvl.leftframe = Frame(toplvl.mainframe)
+        toplvl.leftframe.pack(side=LEFT, fill="both", expand=True)
+        toplvl.leftframe.place(relx=0.01, rely=0.08, relheight=0.93, relwidth=0.09)
+        toplvl.leftframe.configure(relief=GROOVE)
+        toplvl.leftframe.configure(background="#ffffff")
+        toplvl.leftframe.configure(highlightbackground="#000000")
+        toplvl.leftframe.configure(highlightcolor="black")
+        
         toplvl.displayframe = Frame(toplvl.mainframe)
-        toplvl.displayframe.pack(fill="both", expand=True)
+        toplvl.displayframe.pack(side=RIGHT, fill="both", expand=True)
+        toplvl.displayframe.place(relx=0.1, rely=0.08, relheight=0.93, relwidth=0.89)
         toplvl.displayframe.configure(relief=GROOVE)
         toplvl.displayframe.configure(background="#ffffff")
         toplvl.displayframe.configure(highlightbackground="#000000")
         toplvl.displayframe.configure(highlightcolor="black")
         
-        separator6 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
-        separator6.pack(fill=X, padx=5, pady=5)
-        separator6.place(relx=0, rely=0.25, relwidth=1)
+        toplvl.topframe = Frame(toplvl.mainframe)
+        toplvl.topframe.pack(side=LEFT, fill="both", expand=True)
+        toplvl.topframe.place(relx=0.01, rely=0.01, relheight=0.06, relwidth=0.98)
+        toplvl.topframe.configure(relief=GROOVE)
+        toplvl.topframe.configure(background="#ffffff")
+        toplvl.topframe.configure(highlightbackground="#000000")
+        toplvl.topframe.configure(highlightcolor="black")
         
-        separator12 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
-        separator12.pack(fill=X, padx=5, pady=5)
-        separator12.place(relx=0, rely=0.5, relwidth=1)
+#***#################### right frame separators #####################***#
         
-        separator18 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
-        separator18.pack(fill=X, padx=5, pady=5)
-        separator18.place(relx=0, rely=0.75, relwidth=1)
+        Rseparator6 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator6.pack(fill=X, padx=5, pady=5)
+        Rseparator6.place(relx=0, rely=0.25, relwidth=1)
         
-        separatorY = Frame(toplvl.displayframe, width=2, bd=1, relief=SUNKEN)
-        separatorY.pack(fill=Y, padx=5, pady=5)
-        separatorY.place(relx=0.05, rely=0.0, relhight=1)
+        Rseparator12 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator12.pack(fill=X, padx=5, pady=5)
+        Rseparator12.place(relx=0, rely=0.5, relwidth=1)
+        
+        Rseparator18 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator18.pack(fill=X, padx=5, pady=5)
+        Rseparator18.place(relx=0, rely=0.75, relwidth=1)
+        
+#***####################### top frame ############################***#
+        
+        topleft = Frame(toplvl.topframe)
+        topleft.pack(side=RIGHT, fill="both", expand=True)
+        topleft.place(relx=0, rely=0, relheight=1, relwidth=0.09)
+        topleft.configure(relief=GROOVE)
+        topleft.configure(background="#ffffff")
+        topleft.configure(highlightbackground="#000000")
+        topleft.configure(highlightcolor="black")
+        topleft.configure(bd=2)
+        
+        topright = Frame(toplvl.topframe)
+        topright.pack(side=RIGHT, fill="both", expand=True)
+        topright.place(relx=0.091, rely=0, relheight=1, relwidth=0.91)
+        topright.configure(relief=GROOVE)
+        topright.configure(background="#ffffff")
+        topright.configure(highlightbackground="#000000")
+        topright.configure(highlightcolor="black")
+        topright.configure(bd=2)
+        
+        uhrzeit = Label(topleft, text="Uhrzeit")
+        uhrzeit.place(relx=.5, rely=.5, anchor="center")
+
+        topright.grid_rowconfigure(0, weight=1)
+        topright.grid_rowconfigure(1, weight=1)
+        topright.grid_columnconfigure(0, weight=1)
+        topright.grid_columnconfigure(6, weight=1)
+        
+        woche = Label(topright, text="Woche")
+        woche.grid(row=0, column=3)
+        
+        monday = Label(topright, text="Montag")
+        monday.grid(row=1, column=0)
+        
+        tuesday = Label(topright, text="Dienstag")
+        tuesday.grid(row=1, column=1)
+        
+        wednesday = Label(topright, text="Mittwoch")
+        wednesday.grid(row=1, column=2)
+        
+        thursday = Label(topright, text="Donnerstag")
+        thursday.grid(row=1, column=3)
+        
+        friday = Label(topright, text="Freitag")
+        friday.grid(row=1, column=4)
+        
+        saturday = Label(topright, text="Samstag")
+        saturday.grid(row=1, column=5)
+        
+        sunday = Label(topright, text="Sonntag")
+        sunday.grid(row=1, column=6)
+        
+#***####################### left frame ############################***#
+        
+        first6 = Frame(toplvl.leftframe)
+        first6.pack(side=RIGHT, fill="both", expand=True)
+        first6.place(relx=0, rely=0, relheight=0.25, relwidth=1)
+        first6.configure(relief=GROOVE)
+        first6.configure(background="#ffffff")
+        first6.configure(highlightbackground="#000000")
+        first6.configure(highlightcolor="black")
+        first6.configure(bd=2)
+        
+        second6 = Frame(toplvl.leftframe)
+        second6.pack(side=RIGHT, fill="both", expand=True)
+        second6.place(relx=0, rely=0.25, relheight=0.25, relwidth=1)
+        second6.configure(relief=GROOVE)
+        second6.configure(background="#ffffff")
+        second6.configure(highlightbackground="#000000")
+        second6.configure(highlightcolor="black")
+        second6.configure(bd=2)
+        
+        third6 = Frame(toplvl.leftframe)
+        third6.pack(side=RIGHT, fill="both", expand=True)
+        third6.place(relx=0, rely=0.50, relheight=0.25, relwidth=1)
+        third6.configure(relief=GROOVE)
+        third6.configure(background="#ffffff")
+        third6.configure(highlightbackground="#000000")
+        third6.configure(highlightcolor="black")
+        third6.configure(bd=2)
+        
+        fourth6 = Frame(toplvl.leftframe)
+        fourth6.pack(side=RIGHT, fill="both", expand=True)
+        fourth6.place(relx=0, rely=0.75, relheight=0.25, relwidth=1)
+        fourth6.configure(relief=GROOVE)
+        fourth6.configure(background="#ffffff")
+        fourth6.configure(highlightbackground="#000000")
+        fourth6.configure(highlightcolor="black")
+        fourth6.configure(bd=2)
+        
+        cl1 = Label(first6, text="0-6")
+        cl1.place(relx=.5, rely=.5, anchor="center")
+
+        cl2 = Label(second6, text="6-12")
+        cl2.place(relx=.5, rely=.5, anchor="center")
+        
+        cl3 = Label(third6, text="12-18")
+        cl3.place(relx=.5, rely=.5, anchor="center")
+        
+        cl4 = Label(fourth6, text="18-24")
+        cl4.place(relx=.5, rely=.5, anchor="center")
         
 def display_mp():
     
@@ -212,13 +328,10 @@ class Crux:
         
         
         self.displayframe = Frame()
-#        self.rframe = Frame(self.mainframe)
-#        self.rframe.pack(fill=Y, expand=True)
-#        self.rframe.place(relx=0.47, rely=0.01, relheight=0.98, relwidth=0.53)
-#        self.rframe.configure(relief=GROOVE)
-#        self.rframe.configure(background="#000000")
-#        self.rframe.configure(highlightbackground="#000000")
-#        self.rframe.configure(highlightcolor="black")
+
+        self.leftframe = Frame()
+        
+        self.topframe = Frame()
         
         
 
