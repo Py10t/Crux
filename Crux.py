@@ -16,6 +16,8 @@ class Machine_planning:
     
     def __init__(self):
         
+#***####################### Main Frames for MP ############################***#
+        
         toplvl.leftframe = Frame(toplvl.mainframe)
         toplvl.leftframe.pack(side=LEFT, fill="both", expand=True)
         toplvl.leftframe.place(relx=0.01, rely=0.08, relheight=0.93, relwidth=0.09)
@@ -33,7 +35,7 @@ class Machine_planning:
         toplvl.displayframe.configure(highlightcolor="black")
         
         toplvl.topframe = Frame(toplvl.mainframe)
-        toplvl.topframe.pack(side=LEFT, fill="both", expand=True)
+        toplvl.topframe.pack(fill="both", expand=True)
         toplvl.topframe.place(relx=0.01, rely=0.01, relheight=0.06, relwidth=0.98)
         toplvl.topframe.configure(relief=GROOVE)
         toplvl.topframe.configure(background="#ffffff")
@@ -54,13 +56,12 @@ class Machine_planning:
         Rseparator18.pack(fill=X, padx=5, pady=5)
         Rseparator18.place(relx=0, rely=0.75, relwidth=1)
         
-#***####################### top frame ############################***#
+#***####################### top frames ############################***#
         
         topleft = Frame(toplvl.topframe)
         topleft.pack(side=RIGHT, fill="both", expand=True)
         topleft.place(relx=0, rely=0, relheight=1, relwidth=0.09)
         topleft.configure(relief=GROOVE)
-        topleft.configure(background="#ffffff")
         topleft.configure(highlightbackground="#000000")
         topleft.configure(highlightcolor="black")
         topleft.configure(bd=2)
@@ -69,92 +70,200 @@ class Machine_planning:
         topright.pack(side=RIGHT, fill="both", expand=True)
         topright.place(relx=0.091, rely=0, relheight=1, relwidth=0.91)
         topright.configure(relief=GROOVE)
-        topright.configure(background="#ffffff")
         topright.configure(highlightbackground="#000000")
         topright.configure(highlightcolor="black")
         topright.configure(bd=2)
         
-        uhrzeit = Label(topleft, text="Uhrzeit")
-        uhrzeit.place(relx=.5, rely=.5, anchor="center")
-
+#***####################### top texts ############################***#
+        
+        canvasWeek = Canvas(topright, width= 60, height=14)
+        canvasWeek.grid(row=0, column=3)
+        canvasWeek.create_text(2,1, text="Woche", anchor=NW)
+        
+        canvasMon = Canvas(topright, width= 60, height=14)
+        canvasMon.grid(row=1, column=0)
+        canvasMon.create_text(2,1, text="Montag", anchor=NW)
+        
+        canvasTue = Canvas(topright, width= 60, height=14)
+        canvasTue.grid(row=1, column=1)
+        canvasTue.create_text(2,1, text="Dienstag", anchor=NW)
+        
+        canvasWed = Canvas(topright, width= 60, height=14)
+        canvasWed.grid(row=1, column=2)
+        canvasWed.create_text(2,1, text="Mittwoch", anchor=NW)
+        
+        canvasThur = Canvas(topright, width= 60, height=14)
+        canvasThur.grid(row=1, column=3)
+        canvasThur.create_text(2,1, text="Donnerstag", anchor=NW)
+        
+        canvasFri = Canvas(topright, width= 60, height=14)
+        canvasFri.grid(row=1, column=4)
+        canvasFri.create_text(2,1, text="Freitag", anchor=NW)
+        
+        canvasSat = Canvas(topright, width= 60, height=14)
+        canvasSat.grid(row=1, column=5)
+        canvasSat.create_text(2,1, text="Samstag", anchor=NW)
+        
+        canvasSun = Canvas(topright, width= 60, height=14)
+        canvasSun.grid(row=1, column=6)
+        canvasSun.create_text(2,1, text="Sonntag", anchor=NW)
+        
+        canvasClock = Canvas(topleft, width= 36, height=14)
+        canvasClock.place(relx=.5, rely=.5, anchor="center")
+        canvasClock.create_text(2,1, text="Uhrzeit", anchor=NW)
+        
         topright.grid_rowconfigure(0, weight=1)
         topright.grid_rowconfigure(1, weight=1)
         topright.grid_columnconfigure(0, weight=1)
+        topright.grid_columnconfigure(1, weight=1)
+        topright.grid_columnconfigure(2, weight=1)
+        topright.grid_columnconfigure(3, weight=1)
+        topright.grid_columnconfigure(4, weight=1)
+        topright.grid_columnconfigure(5, weight=1)
         topright.grid_columnconfigure(6, weight=1)
         
-        woche = Label(topright, text="Woche")
-        woche.grid(row=0, column=3)
+#***####################### left frames ############################***#
         
-        monday = Label(topright, text="Montag")
-        monday.grid(row=1, column=0)
+        M_1 = Frame(toplvl.leftframe)
+        M_1.pack(side=RIGHT, fill="both", expand=True)
+        M_1.place(relx=0, rely=0, relheight=0.125, relwidth=1)
+        M_1.configure(relief=GROOVE)
+        M_1.configure(highlightbackground="#000000")
+        M_1.configure(highlightcolor="black")
+        M_1.configure(bd=2)
         
-        tuesday = Label(topright, text="Dienstag")
-        tuesday.grid(row=1, column=1)
+        M_2 = Frame(toplvl.leftframe)
+        M_2.pack(side=RIGHT, fill="both", expand=True)
+        M_2.place(relx=0, rely=0.125, relheight=0.125, relwidth=1)
+        M_2.configure(relief=GROOVE)
+        M_2.configure(highlightbackground="#000000")
+        M_2.configure(highlightcolor="black")
+        M_2.configure(bd=2)
         
-        wednesday = Label(topright, text="Mittwoch")
-        wednesday.grid(row=1, column=2)
+        M_3 = Frame(toplvl.leftframe)
+        M_3.pack(side=RIGHT, fill="both", expand=True)
+        M_3.place(relx=0, rely=0.25, relheight=0.125, relwidth=1)
+        M_3.configure(relief=GROOVE)
+        M_3.configure(highlightbackground="#000000")
+        M_3.configure(highlightcolor="black")
+        M_3.configure(bd=2)
         
-        thursday = Label(topright, text="Donnerstag")
-        thursday.grid(row=1, column=3)
+        M_4 = Frame(toplvl.leftframe)
+        M_4.pack(side=RIGHT, fill="both", expand=True)
+        M_4.place(relx=0, rely=0.375, relheight=0.125, relwidth=1)
+        M_4.configure(relief=GROOVE)
+        M_4.configure(highlightbackground="#000000")
+        M_4.configure(highlightcolor="black")
+        M_4.configure(bd=2)
         
-        friday = Label(topright, text="Freitag")
-        friday.grid(row=1, column=4)
+        M_5 = Frame(toplvl.leftframe)
+        M_5.pack(side=RIGHT, fill="both", expand=True)
+        M_5.place(relx=0, rely=0.5, relheight=0.125, relwidth=1)
+        M_5.configure(relief=GROOVE)
+        M_5.configure(highlightbackground="#000000")
+        M_5.configure(highlightcolor="black")
+        M_5.configure(bd=2)
         
-        saturday = Label(topright, text="Samstag")
-        saturday.grid(row=1, column=5)
+        M_6 = Frame(toplvl.leftframe)
+        M_6.pack(side=RIGHT, fill="both", expand=True)
+        M_6.place(relx=0, rely=0.625, relheight=0.125, relwidth=1)
+        M_6.configure(relief=GROOVE)
+        M_6.configure(highlightbackground="#000000")
+        M_6.configure(highlightcolor="black")
+        M_6.configure(bd=2)
         
-        sunday = Label(topright, text="Sonntag")
-        sunday.grid(row=1, column=6)
+        M_7 = Frame(toplvl.leftframe)
+        M_7.pack(side=RIGHT, fill="both", expand=True)
+        M_7.place(relx=0, rely=0.75, relheight=0.125, relwidth=1)
+        M_7.configure(relief=GROOVE)
+        M_7.configure(highlightbackground="#000000")
+        M_7.configure(highlightcolor="black")
+        M_7.configure(bd=2)
         
-#***####################### left frame ############################***#
+        M_8 = Frame(toplvl.leftframe)
+        M_8.pack(side=RIGHT, fill="both", expand=True)
+        M_8.place(relx=0, rely=0.875, relheight=0.125, relwidth=1)
+        M_8.configure(relief=GROOVE)
+        M_8.configure(highlightbackground="#000000")
+        M_8.configure(highlightcolor="black")
+        M_8.configure(bd=2)
         
-        first6 = Frame(toplvl.leftframe)
-        first6.pack(side=RIGHT, fill="both", expand=True)
-        first6.place(relx=0, rely=0, relheight=0.25, relwidth=1)
-        first6.configure(relief=GROOVE)
-        first6.configure(background="#ffffff")
-        first6.configure(highlightbackground="#000000")
-        first6.configure(highlightcolor="black")
-        first6.configure(bd=2)
         
-        second6 = Frame(toplvl.leftframe)
-        second6.pack(side=RIGHT, fill="both", expand=True)
-        second6.place(relx=0, rely=0.25, relheight=0.25, relwidth=1)
-        second6.configure(relief=GROOVE)
-        second6.configure(background="#ffffff")
-        second6.configure(highlightbackground="#000000")
-        second6.configure(highlightcolor="black")
-        second6.configure(bd=2)
+#***####################### left texts ############################***#
         
-        third6 = Frame(toplvl.leftframe)
-        third6.pack(side=RIGHT, fill="both", expand=True)
-        third6.place(relx=0, rely=0.50, relheight=0.25, relwidth=1)
-        third6.configure(relief=GROOVE)
-        third6.configure(background="#ffffff")
-        third6.configure(highlightbackground="#000000")
-        third6.configure(highlightcolor="black")
-        third6.configure(bd=2)
+        M_1_Butt = Button(M_1, text="Maschine 1", command=lambda:[newstockbuttons()])
+        M_1_Butt.pack(fill=BOTH, expand=1)
         
-        fourth6 = Frame(toplvl.leftframe)
-        fourth6.pack(side=RIGHT, fill="both", expand=True)
-        fourth6.place(relx=0, rely=0.75, relheight=0.25, relwidth=1)
-        fourth6.configure(relief=GROOVE)
-        fourth6.configure(background="#ffffff")
-        fourth6.configure(highlightbackground="#000000")
-        fourth6.configure(highlightcolor="black")
-        fourth6.configure(bd=2)
+        M_2_Butt = Button(M_2, text="Maschine 2", command=lambda:[newstockbuttons()])
+        M_2_Butt.pack(fill=BOTH, expand=1)
         
-        cl1 = Label(first6, text="0-6")
-        cl1.place(relx=.5, rely=.5, anchor="center")
+        M_3_Butt = Button(M_3, text="Maschine 3", command=lambda:[newstockbuttons()])
+        M_3_Butt.pack(fill=BOTH, expand=1)
+        
+        M_4_Butt = Button(M_4, text="Maschine 4", command=lambda:[newstockbuttons()])
+        M_4_Butt.pack(fill=BOTH, expand=1)
+        
+        M_5_Butt = Button(M_5, text="Maschine 5", command=lambda:[newstockbuttons()])
+        M_5_Butt.pack(fill=BOTH, expand=1)
+        
+        M_6_Butt = Button(M_6, text="Maschine 6", command=lambda:[newstockbuttons()])
+        M_6_Butt.pack(fill=BOTH, expand=1)
+        
+        M_7_Butt = Button(M_7, text="Maschine 7", command=lambda:[newstockbuttons()])
+        M_7_Butt.pack(fill=BOTH, expand=1)
+        
+        M_8_Butt = Button(M_8, text="Maschine 8", command=lambda:[newstockbuttons()])
+        M_8_Butt.pack(fill=BOTH, expand=1)
+        
+#***####################### !grid ############################***#
+        
+        toplvl.displayframe.grid_rowconfigure(0, weight=1)
+        toplvl.displayframe.grid_rowconfigure(1, weight=1)
+        toplvl.displayframe.grid_rowconfigure(2, weight=1)
+        toplvl.displayframe.grid_rowconfigure(3, weight=1)
+        toplvl.displayframe.grid_rowconfigure(4, weight=1)
+        toplvl.displayframe.grid_rowconfigure(5, weight=1)
+        toplvl.displayframe.grid_rowconfigure(6, weight=1)
+        toplvl.displayframe.grid_rowconfigure(7, weight=1)
+        
+        toplvl.displayframe.grid_columnconfigure(0, weight=1)
+        toplvl.displayframe.grid_columnconfigure(1, weight=1)
+        toplvl.displayframe.grid_columnconfigure(2, weight=1)
+        toplvl.displayframe.grid_columnconfigure(3, weight=1)
+        toplvl.displayframe.grid_columnconfigure(4, weight=1)
+        toplvl.displayframe.grid_columnconfigure(5, weight=1)
+        toplvl.displayframe.grid_columnconfigure(6, weight=1)
+        toplvl.displayframe.grid_columnconfigure(7, weight=1)
+        toplvl.displayframe.grid_columnconfigure(8, weight=1)
+        toplvl.displayframe.grid_columnconfigure(9, weight=1)
+        toplvl.displayframe.grid_columnconfigure(10, weight=1)
+        toplvl.displayframe.grid_columnconfigure(11, weight=1)
 
-        cl2 = Label(second6, text="6-12")
-        cl2.place(relx=.5, rely=.5, anchor="center")
         
-        cl3 = Label(third6, text="12-18")
-        cl3.place(relx=.5, rely=.5, anchor="center")
+        titlelabel1 = Label(toplvl.displayframe, bg ="black")
+        titlelabel1.grid(row=0, column=0, sticky='we', columnspan=12)
         
-        cl4 = Label(fourth6, text="18-24")
-        cl4.place(relx=.5, rely=.5, anchor="center")
+        titlelabel2 = Label(toplvl.displayframe, bg ="yellow")
+        titlelabel2.grid(row=1, column=0, sticky='we', columnspan=10)
+        
+        titlelabel3 = Label(toplvl.displayframe, bg ="blue")
+        titlelabel3.grid(row=2, column=0, sticky='we', columnspan=8)
+        
+        titlelabel4 = Label(toplvl.displayframe, bg ="black")
+        titlelabel4.grid(row=3, column=0, sticky='we', columnspan=4)
+        
+        titlelabel5 = Label(toplvl.displayframe, bg ="orange")
+        titlelabel5.grid(row=4, column=0, sticky='we', columnspan=7)
+        
+        titlelabel6 = Label(toplvl.displayframe, bg ="grey")
+        titlelabel6.grid(row=5, column=0, sticky='we', columnspan=10)
+        
+        titlelabel7 = Label(toplvl.displayframe, bg ="green")
+        titlelabel7.grid(row=6, column=0, sticky='we', columnspan=4)
+        
+        titlelabel8 = Label(toplvl.displayframe, bg ="red")
+        titlelabel8.grid(row=7, column=0, sticky='we', columnspan=11)
+
         
 def display_mp():
     
