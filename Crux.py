@@ -9,7 +9,228 @@ from tkinter import *
 import stuff
 import os
 import basedata
+import coredb
 from tkinter import filedialog
+
+
+#***####################### ******* ############################***#
+#***####################### CLASSES ############################***#
+#***####################### ******* ############################***#
+
+
+class Modify_Object:
+    
+    def __init__(self, dbentry_lst, label_names):
+        
+        toplvl.leftframe = Frame(toplvl.mainframe)
+        toplvl.leftframe.pack(side=LEFT, fill=Y, expand=True)
+        toplvl.leftframe.place(relx=0.01, rely=0.01, relheight=0.98, relwidth=0.49)
+        toplvl.leftframe.configure(relief=GROOVE)
+#        toplvl.leftframe.configure(background="#000000")
+        toplvl.leftframe.configure(highlightbackground="#000000")
+        toplvl.leftframe.configure(highlightcolor="black")
+        toplvl.leftframe.configure(bd=2)
+        
+        i = 0
+        
+        customer_parameter = []
+        
+        self.article_parameter = [
+                            'name',
+                            'intID',
+                            'extID',
+                            'weight',
+                            'ppcent',
+                            'mincost',
+                            'dimensions',
+                            'material'
+                            ]
+        
+        self.material_parameter = []
+        
+        optionX = label_names
+        optDict = {1 : customer_parameter,
+                   2 : self.article_parameter,
+                   3 : self.material_parameter,
+                   }
+        choices = optDict[optionX]
+        
+        
+        for item in choices:
+            nameL = Label(toplvl.leftframe, text=item)
+            nameL.grid(row=i+1, column=0, sticky=E)
+
+            self.material_parameter.append(Entry(toplvl.leftframe))
+            self.material_parameter[i].delete(0, END)
+            self.material_parameter[i].insert(0, dbentry_lst[i])
+            self.material_parameter[i].grid(row=i+1, column=1)
+            
+            i = i+1
+        
+        confirm_Butt = Button(toplvl.leftframe, 
+                        text="Confirm", 
+                        command=lambda:[self.getem()])
+        confirm_Butt.grid()
+    
+    def update_dbframe(self):
+        
+        ("...loading: Modifying_Object/update_dbframe()")
+        
+        lst = coredb.get_everything([0,2])
+        
+        displaydb(lst)
+        
+    def getem(self):
+            
+        ("...loading: Modifying_Object/getem()")
+        
+        lst =[1]
+        
+        for i in range(len(self.material_parameter)):
+            lst.append(self.material_parameter[i].get())
+        
+        startmodule(lst)
+        
+        self.update_dbframe()
+
+
+class Display_Object:
+    
+    def __init__(self, lst):
+        
+        toplvl.displayframe = Frame(toplvl.mainframe)
+        toplvl.displayframe.pack(side=RIGHT, fill=Y, expand=True)
+        toplvl.displayframe.place(relx=0.51, rely=0.01, relheight=0.98, relwidth=0.49)
+        toplvl.displayframe.configure(relief=GROOVE)
+        toplvl.displayframe.configure(background="#000000")
+        toplvl.displayframe.configure(highlightbackground="#000000")
+        toplvl.displayframe.configure(highlightcolor="black")
+        toplvl.displayframe.configure(bd=2)
+        
+        lst_length = len(lst[0])
+        i = 0
+        
+        while i in range(lst_length):
+            table_frame = Frame(toplvl.displayframe)
+            table_frame.pack(side=LEFT, fill = Y, expand=True)
+            table_frame.configure(background="red")
+            table_button = Button(table_frame, text=i)
+            table_button.pack()
+            i = i+1
+
+
+class Checkbox:
+    
+    def __init__(self, master):
+        
+        print ('...loading: new search box')
+        
+        self.x=[]
+        
+        master.geometry("600x300")
+        master.title("Weird Checkbox template")
+        
+        #Labels
+        self.searchL = Label(master, text='Search for: ')
+        self.searchL.grid(row=1, column=0, sticky=E)
+        self.searchL = Label(master, text='Check following DBs: ')
+        self.searchL.grid(row=3, column=0, sticky=E)
+        
+        #Entry boxes
+        self.searchE = Entry(master)
+        self.searchE.delete(0, END)
+        self.searchE.insert(0, "Stopfen")
+        self.searchE.grid(row=2, column=1)
+        
+        self.tkvar = StringVar(master)
+        # Dictionary with options
+        choices = ['Name', 
+                'Adresse',
+                'Email',
+                'intID',
+                'extID',
+                'Gewicht',
+                'Preis(%)',
+                'Maße',
+                'Material',
+                'Hersteller',
+                'Preis']
+        
+        self.tkvar.set('Such Parameter') # set the default option
+        
+        popupMenu = OptionMenu(master, self.tkvar, *choices)
+        popupMenu.grid(row = 2, column = 2)
+        
+        #Checkbuttons
+        self.checkVar1 = IntVar(master)
+        checkbuttonC = Checkbutton(master, text = "Customers", variable = self.checkVar1)
+        checkbuttonC.grid(row=3, column=1,)
+#        checkbuttonC.select()
+        
+        self.checkVar2 = IntVar(master)
+        checkbuttonA = Checkbutton(master, text = "Articles", variable = self.checkVar2)
+        checkbuttonA.grid(row=3, column=2,)
+        checkbuttonA.select()
+        
+        self.checkVar3 = IntVar(master)
+        checkbuttonM = Checkbutton(master, text = "Materials", variable = self.checkVar3)
+        checkbuttonM.grid(row=3, column=3,)
+#        checkbuttonM.select()
+        
+        #Search Button
+        searchButt = Button(master, text="Confirm")
+        searchButt.grid(row=4, column=0)
+        searchButt.config(command = lambda: [self.search_helper(self.searchE.get())])
+        
+        
+    def search_helper(self, search_word):
+        lst = []
+        if self.checkVar1.get() == True:
+            lst = coredb.get_all_customers()
+        elif self.checkVar2.get() == True:
+            lst = coredb.get_all_articles()
+        elif self.checkVar3.get() == True:
+            lst = coredb.get_all_materials()
+            
+        self.search_func(search_word, self.tkvar.get(), lst)
+        
+    def search_func(self, search_word, search_parameter, db_lst,):
+        
+        i=0
+        
+        optDict = {'Name' : 0, 
+                'Adresse' : 1,
+                'Email' : 2,
+                'intID' : 1,
+                'extID' : 2,
+                'Gewicht' : 3,
+                'Preis(%)' : 4,
+                'Maße' : 6,
+                'Material' : 7,
+                'Hersteller' : 1,
+                'Preis' : 2
+                }
+        s_p = optDict[search_parameter]
+        
+        print ('...loading: C-Checkbox/search_func')
+        
+        full_lst = db_lst
+        search_lst = []
+        
+        for x in full_lst:
+            if x[s_p] == search_word:
+                search_lst.append(full_lst[i])
+                i = i + 1
+#                print ("if " + str(i))
+
+            elif x[s_p] != search_word:
+                i = i + 1
+#                print ("else " + str(i))
+        
+#        print (search_lst)
+#        print (len(search_lst))
+        
+        displaydb(search_lst)
 
 
 class Machine_planning:
@@ -44,17 +265,33 @@ class Machine_planning:
         
 #***#################### right frame separators #####################***#
         
+        Rseparator1 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator1.pack(fill=X, padx=5, pady=5)
+        Rseparator1.place(relx=0, rely=0.125, relwidth=1)
+        
+        Rseparator2 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator2.pack(fill=X, padx=5, pady=5)
+        Rseparator2.place(relx=0, rely=0.25, relwidth=1)
+        
+        Rseparator3 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator3.pack(fill=X, padx=5, pady=5)
+        Rseparator3.place(relx=0, rely=0.375, relwidth=1)
+        
+        Rseparator4 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator4.pack(fill=X, padx=5, pady=5)
+        Rseparator4.place(relx=0, rely=0.5, relwidth=1)
+        
+        Rseparator5 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator5.pack(fill=X, padx=5, pady=5)
+        Rseparator5.place(relx=0, rely=0.625, relwidth=1)
+        
         Rseparator6 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
         Rseparator6.pack(fill=X, padx=5, pady=5)
-        Rseparator6.place(relx=0, rely=0.25, relwidth=1)
+        Rseparator6.place(relx=0, rely=0.75, relwidth=1)
         
-        Rseparator12 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
-        Rseparator12.pack(fill=X, padx=5, pady=5)
-        Rseparator12.place(relx=0, rely=0.5, relwidth=1)
-        
-        Rseparator18 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
-        Rseparator18.pack(fill=X, padx=5, pady=5)
-        Rseparator18.place(relx=0, rely=0.75, relwidth=1)
+        Rseparator7 = Frame(toplvl.displayframe, height=2, bd=1, relief=SUNKEN)
+        Rseparator7.pack(fill=X, padx=5, pady=5)
+        Rseparator7.place(relx=0, rely=0.875, relwidth=1)
         
 #***####################### top frames ############################***#
         
@@ -108,9 +345,8 @@ class Machine_planning:
         canvasSun.grid(row=1, column=6)
         canvasSun.create_text(2,1, text="Sonntag", anchor=NW)
         
-        canvasClock = Canvas(topleft, width= 36, height=14)
-        canvasClock.place(relx=.5, rely=.5, anchor="center")
-        canvasClock.create_text(2,1, text="Uhrzeit", anchor=NW)
+        New_Plan_Butt = Button(topleft, text="Neu", command=lambda:[searchlist()])
+        New_Plan_Butt.pack(fill=BOTH, expand=1)
         
         topright.grid_rowconfigure(0, weight=1)
         topright.grid_rowconfigure(1, weight=1)
@@ -240,37 +476,30 @@ class Machine_planning:
         toplvl.displayframe.grid_columnconfigure(11, weight=1)
 
         
-        titlelabel1 = Label(toplvl.displayframe, bg ="black")
+        titlelabel1 = Label(toplvl.displayframe, bg ="black", height=3)
         titlelabel1.grid(row=0, column=0, sticky='we', columnspan=12)
         
-        titlelabel2 = Label(toplvl.displayframe, bg ="yellow")
+        titlelabel2 = Label(toplvl.displayframe, bg ="yellow", height=3)
         titlelabel2.grid(row=1, column=0, sticky='we', columnspan=10)
         
-        titlelabel3 = Label(toplvl.displayframe, bg ="blue")
+        titlelabel3 = Label(toplvl.displayframe, bg ="blue", height=3)
         titlelabel3.grid(row=2, column=0, sticky='we', columnspan=8)
         
-        titlelabel4 = Label(toplvl.displayframe, bg ="black")
+        titlelabel4 = Label(toplvl.displayframe, bg ="black", height=3)
         titlelabel4.grid(row=3, column=0, sticky='we', columnspan=4)
         
-        titlelabel5 = Label(toplvl.displayframe, bg ="orange")
+        titlelabel5 = Label(toplvl.displayframe, bg ="orange", height=3)
         titlelabel5.grid(row=4, column=0, sticky='we', columnspan=7)
         
-        titlelabel6 = Label(toplvl.displayframe, bg ="grey")
+        titlelabel6 = Label(toplvl.displayframe, bg ="grey", height=3)
         titlelabel6.grid(row=5, column=0, sticky='we', columnspan=10)
         
-        titlelabel7 = Label(toplvl.displayframe, bg ="green")
+        titlelabel7 = Label(toplvl.displayframe, bg ="green", height=3)
         titlelabel7.grid(row=6, column=0, sticky='we', columnspan=4)
         
-        titlelabel8 = Label(toplvl.displayframe, bg ="red")
+        titlelabel8 = Label(toplvl.displayframe, bg ="red", height=3)
         titlelabel8.grid(row=7, column=0, sticky='we', columnspan=11)
 
-        
-def display_mp():
-    
-    print ('...loading: display_mp')
-    
-    new_frame = Machine_planning()
-    
 
 class Enginedisplayer:
     
@@ -308,15 +537,52 @@ class Enginedisplayer:
         
     def openfile(self):
         return filedialog.askopenfilename()
+
+
+#***####################### ********* ############################***#
+#***####################### FUNCTIONS ############################***#
+#***####################### ********* ############################***#
+def startmodule(x):
+    
+#
+#-optDict[] ruft eine der def() aus dem dict auf
+#
+    
+    print ('...loading: startmodule()')
         
+    optionX = x[0]
+    optDict = {1 : coredb.update_article,
+               2 : coredb.get_everything,
+               3 : searchlist,
+               }
+    print ('...Parameter: ', x)
+    return optDict[optionX](x)
+
+
+def display_mp():
+    
+    print ('...loading: display_mp')
+    
+    new_frame = Machine_planning()
+    
+def searchlist():
+    
+    print ('...loading: searchlist')
+    
+    box = Toplevel(toplvl.mainframe)
+    newboxclass = Checkbox(box)
+    
+    
 def display_engines():
     
     print ('...loading: display_machines')
     
     box = Enginedisplayer()
     
+    
 def doNothing():
     print(toplvl.x)
+    
     
 def newdata():
     
@@ -327,46 +593,92 @@ def newdata():
     y = [stuff.newcustomerbox, stuff.newarticlebox, stuff.newmaterialbox]
     newbox = basedata.Basic_box(w, x, y)
     
+    
 def newstockbuttons():
     
     print ('...loading: newstockbuttons()')
     
     w = "Second box"
     x = ["Customer", "Article", "Material"]
-    y = [lambda: displaydb([2, 1]), lambda: displaydb([2, 2]), lambda: displaydb([2, 3])]
+    y = [lambda: displayhelper([2, 1]), lambda: displayhelper([2, 2]), lambda: displayhelper([2, 3])]
     newbox = basedata.Basic_box(w, x, y)
 
 
 def displayframe():
 # ***** Right frame ****
-        
-        
-        toplvl.displayframe = Frame(toplvl.mainframe)
-        toplvl.displayframe.pack(fill=Y, expand=True)
-        toplvl.displayframe.place(relx=0.47, rely=0.01, relheight=0.98, relwidth=0.53)
-        toplvl.displayframe.configure(relief=GROOVE)
-        toplvl.displayframe.configure(background="#000000")
-        toplvl.displayframe.configure(highlightbackground="#000000")
-        toplvl.displayframe.configure(highlightcolor="black")
+    #call this function to clear right frame
+    
+    print ('...loading: displayframe() -> clearing right frame')
+    
+    toplvl.displayframe = Frame(toplvl.mainframe)
+    toplvl.displayframe.pack(side=RIGHT, fill=Y, expand=True)
+    toplvl.displayframe.place(relx=0.51, rely=0.01, relheight=0.98, relwidth=0.48)
+    toplvl.displayframe.configure(relief=GROOVE)
+    toplvl.displayframe.configure(background="#000000")
+    toplvl.displayframe.configure(highlightbackground="#000000")
+    toplvl.displayframe.configure(highlightcolor="black")
+    toplvl.displayframe.configure(bd=2)
 
 
-def displaydb(x):
+def displayhelper(x):
+    
+    print ('...loading: displayhelper()')
+    
+    lst = startmodule(x)
+    
+    displaydb(lst)
+
+
+def whatever(x):
+    
+    print ('...loading: displayhelper()')
+    
+    box = Modify_Object(x, 2)
+
+
+def displaydb(lst):
 #iterates through a list retrieved from db and displays it in rframe
     
-    print ('...loading: showdb()')
-    
-    lst = stuff.startmodule(x)
-    
+    print ('...loading: displaydb()')
+        
     displayframe()
     
     dbdisplay = Text(toplvl.displayframe)
+    
+    name_frame = Frame(toplvl.displayframe)
+    
+# every entry in the DB becomes a list and is packed in a list -> listception
+    
+#***####################### need a function that  ############################***#
+    
+#***####################### searches throught lists ############################***#
        
     for x in lst:
         dbdisplay.insert(END, str(x) + '\n')
     
     dbdisplay.pack()
     
+    update = Button(toplvl.displayframe, 
+                    text="get_marked", 
+                    command=lambda:[object_selection(dbdisplay.selection_get())])
+    
+    update.pack(side=LEFT, padx=2, pady=2)
+    
+    update2 = Button(toplvl.displayframe, 
+                    text="modify_first_E", 
+                    command=lambda:[whatever(lst[0])])
+    
+    update2.pack(side=LEFT, padx=2, pady=2)
+    
     print ('db listed in rframe')
+    
+    
+def object_selection(x):
+    print (x)
+    
+    box = Display_Object(x)
+    
+    
 
 
 class Crux:
@@ -374,8 +686,8 @@ class Crux:
     def __init__(self, master):
 # ***** Main Menu *****
         
-        
-        master.geometry("800x600+834+103")
+        master.geometry("1000x600")
+#        master.geometry("800x600+834+103")
         master.title("Crux")
         master.configure(background="#d9d9d9")
         master.configure(highlightbackground="#d9d9d9")
@@ -407,7 +719,7 @@ class Crux:
         self.toolbar = Frame(master, bg="grey")
         self.insertButt = Button(self.toolbar, text="New(Demo)", command=lambda:[newdata()])
         self.insertButt.pack(side=LEFT, padx=2, pady=2)
-        self.printButt = Button(self.toolbar, text="Search", command=lambda:[stuff.newsearchbox1()])
+        self.printButt = Button(self.toolbar, text="Search", command=lambda:[searchlist()])
         self.printButt.pack(side=LEFT, padx=2, pady=2)
         self.stockButt = Button(self.toolbar, text="Stock", command=lambda:[newstockbuttons()])
         self.stockButt.pack(side=LEFT, padx=2, pady=2)

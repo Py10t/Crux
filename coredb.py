@@ -84,6 +84,10 @@ c = conn.cursor()
 #    get_everything()
     
 
+#***####################### ******* ############################***#
+#***####################### INSERT #############################***#
+#***####################### ******* ############################***#
+
 def insert_newcustomer(emp):
     
     print ('...loading: insert_newcustomer()')
@@ -133,34 +137,32 @@ def insert_newmaterial(emp):
 #    articles = [1,4,5,6,7,10]
 #    material = [1,10,11,12]
 
+#***####################### ******* ############################***#
+#***####################### READ Table #########################***#
+#***####################### ******* ############################***#
     
-def get_stuff_by_type(x):
     
-    print ('...loading: get_stuff_by_type()')
-    
-    print (x)
-    displayed = []    
-    if x[0] == 1:
-        print ('x[0]=1')
-        c.execute("SELECT * FROM dbcustomers WHERE name=:name", {'name': x[1]})
-        displayed = c.fetchall()
-    elif x[0] == 2:
-        print ('x[0]=2')
-        c.execute("SELECT * FROM dbarticles WHERE name=:name", {'name': x[1]})
-        displayed = c.fetchall()
-    elif x[0] == 3:
-        print ('x[0]=3')
-        c.execute("SELECT * FROM dbmaterials WHERE name=:name", {'name': x[1]})
-        displayed = c.fetchall()
-        
-    return displayed
-       
-#def get_stuff_by_name(searchobject):
+#def get_stuff_by_type(x):
 #    
-#    print ('...loading: get_stuff_by_name()')
+#    print ('...loading: get_stuff_by_type()')
 #    
-#    c.execute("SELECT * FROM coredatabase1 WHERE name=:name", {'name': searchobject})
-#    return c.fetchall()
+#    print (x)
+#    displayed = []    
+#    if x[0] == 1:
+#        print ('x[0]=1')
+#        c.execute("SELECT * FROM dbcustomers WHERE name=:name", {'name': x[1]})
+#        displayed = c.fetchall()
+#    elif x[0] == 2:
+#        print ('x[0]=2')
+#        c.execute("SELECT * FROM dbarticles WHERE name=:name", {'name': x[1]})
+#        displayed = c.fetchall()
+#    elif x[0] == 3:
+#        print ('x[0]=3')
+#        c.execute("SELECT * FROM dbmaterials WHERE name=:name", {'name': x[1]})
+#        displayed = c.fetchall()
+#        
+#    return displayed
+#       
     
 #***###################################################***#
 def get_everything(x):
@@ -192,13 +194,39 @@ def get_all_materials():
     c.execute("SELECT * FROM dbmaterials")
     return (c.fetchall())
 
-#***###################################################***#
+#***####################### ******* ############################***#
+#***####################### UPDATE  ############################***#
+#***####################### ******* ############################***#
     
-def update_pay(emp, pay):
+def update_article(lst):
+    
+#    with conn:
+#        c.execute("""UPDATE employees SET pay = :pay
+#                    WHERE first = :first AND last = :last""",
+#                  {'first': emp.first, 'last': emp.last, 'pay': pay})
+    
     with conn:
-        c.execute("""UPDATE employees SET pay = :pay
-                    WHERE first = :first AND last = :last""",
-                  {'first': emp.first, 'last': emp.last, 'pay': pay})
+        c.execute("""UPDATE dbarticles SET name = :name,
+                                          intID = :intID,
+                                          extID = :extID,
+                                          weight = :weight,
+                                          ppcent = :ppcent,
+                                          mincost = :mincost,
+                                          dimensions = :dimensions,
+                                          material = :material
+                    WHERE intID = :intID""", 
+                 {
+                'name': lst[1], 
+                'intID': lst[2],
+                'extID': lst[3],
+                'weight': lst[4],
+                'ppcent': lst[5],
+                'mincost': lst[6],
+                'dimensions': lst[7],
+                'material': lst[8]
+                })
+        
+        print ("Finished updating article %s" %lst[2])
 
 
 def remove_emp(emp):

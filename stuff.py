@@ -30,20 +30,20 @@ def startmodule(x):
 #***###################################################***#
 
 
-def getting_a_list(xlst):
-    
-    print (xlst[1])
-    x = []
-    if xlst[2] == 1:
-        x.append(coredb.get_stuff_by_type([1, xlst[1]]))
-    
-    elif xlst[2] == 1:
-        x.append(coredb.get_stuff_by_type([2, xlst[1]]))
-    
-    elif xlst[2] == 1:
-        x.append(coredb.get_stuff_by_type([3, xlst[1]]))
-    print (x)
-    return x
+#def getting_a_list(xlst):
+#    
+#    print (xlst[1])
+#    x = []
+#    if xlst[2] == 1:
+#        x.append(coredb.get_stuff_by_type([1, xlst[1]]))
+#    
+#    elif xlst[2] == 1:
+#        x.append(coredb.get_stuff_by_type([2, xlst[1]]))
+#    
+#    elif xlst[2] == 1:
+#        x.append(coredb.get_stuff_by_type([3, xlst[1]]))
+#    print (x)
+#    return x
 
 
 def herewego(x):
@@ -270,54 +270,3 @@ def newsearchbox1():
     toplvl = Checkbox(box)
 
 
-class Checkbox:
-    
-    def __init__(self, master):
-        
-        print ('...loading: new search box')
-        
-        self.x=[]
-        
-        master.geometry("600x300")
-        master.title("Weird Checkbox template")
-        
-        #Labels
-        self.searchL = Label(master, text='Search for: ')
-        self.searchL.grid(row=1, column=0, sticky=E)
-        self.searchL = Label(master, text='Check following DBs: ')
-        self.searchL.grid(row=3, column=0, sticky=E)
-        
-        #Entry boxes
-        self.searchE = Entry(master)
-        self.searchE.delete(0, END)
-        self.searchE.insert(0, "PTFE")
-        self.searchE.grid(row=2, column=1)
-        
-        #Checkbuttons
-        self.checkVar1 = IntVar(master)
-        checkbuttonC = Checkbutton(master, text = "Customers", variable = self.checkVar1)
-        checkbuttonC.grid(row=3, column=1,)
-        checkbuttonC.select()
-        
-        self.checkVar2 = IntVar(master)
-        checkbuttonA = Checkbutton(master, text = "Articles", variable = self.checkVar2)
-        checkbuttonA.grid(row=3, column=2,)
-        checkbuttonA.select()
-        
-        self.checkVar3 = IntVar(master)
-        self.checkbuttonM = Checkbutton(master, text = "Materials", variable = self.checkVar3)
-        self.checkbuttonM.grid(row=3, column=3,)
-        self.checkbuttonM.select()
-        
-        #Search Button
-        searchButt = Button(master, text="Confirm")
-        searchButt.grid(row=4, column=0)
-#        self.searchButt.config(command = lambda: [self.checkem(self.checkVar1.get(), self.checkVar2, self.checkVar2)])
-        searchButt.config(command = lambda: [self.checkem()])
-    
-    
-    def checkem(self):
-
-        print ("variable1 is ", self.checkVar1.get())
-        print ("variable2 is ", self.checkVar2.get())
-        print ("variable3 is ", self.checkVar3.get())
