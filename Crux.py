@@ -22,9 +22,11 @@ class Modify_Object:
     
     def __init__(self, dbentry_lst, label_names):
         
+        print (label_names)
+        
         toplvl.leftframe = Frame(toplvl.mainframe)
         toplvl.leftframe.pack(side=LEFT, fill=Y, expand=True)
-        toplvl.leftframe.place(relx=0.01, rely=0.01, relheight=0.98, relwidth=0.49)
+        toplvl.leftframe.place(relx=0.01, rely=0.17, relheight=0.83, relwidth=0.49)
         toplvl.leftframe.configure(relief=GROOVE)
 #        toplvl.leftframe.configure(background="#000000")
         toplvl.leftframe.configure(highlightbackground="#000000")
@@ -33,7 +35,11 @@ class Modify_Object:
         
         i = 0
         
-        customer_parameter = []
+        self.customer_parameter = [
+                            'name', 
+                            'address',
+                            'email'
+                            ]
         
         self.article_parameter = [
                             'name',
@@ -45,11 +51,18 @@ class Modify_Object:
                             'dimensions',
                             'material'
                             ]
-        
-        self.material_parameter = []
+        self.material_parameter = [
+                            'name',
+                            'intID',
+                            'material',
+                            'company',
+                            'price'
+                            ]
+        #entries enthält alle entry boxes des folgenden for loops
+        self.entries = []
         
         optionX = label_names
-        optDict = {1 : customer_parameter,
+        optDict = {1 : self.customer_parameter,
                    2 : self.article_parameter,
                    3 : self.material_parameter,
                    }
@@ -60,10 +73,10 @@ class Modify_Object:
             nameL = Label(toplvl.leftframe, text=item)
             nameL.grid(row=i+1, column=0, sticky=E)
 
-            self.material_parameter.append(Entry(toplvl.leftframe))
-            self.material_parameter[i].delete(0, END)
-            self.material_parameter[i].insert(0, dbentry_lst[i])
-            self.material_parameter[i].grid(row=i+1, column=1)
+            self.entries.append(Entry(toplvl.leftframe))
+            self.entries[i].delete(0, END)
+            self.entries[i].insert(0, dbentry_lst[i])
+            self.entries[i].grid(row=i+1, column=1)
             
             i = i+1
         
@@ -71,6 +84,7 @@ class Modify_Object:
                         text="Confirm", 
                         command=lambda:[self.getem()])
         confirm_Butt.grid()
+        
     
     def update_dbframe(self):
         
@@ -80,14 +94,15 @@ class Modify_Object:
         
         displaydb(lst)
         
+        
     def getem(self):
             
         ("...loading: Modifying_Object/getem()")
         
         lst =[1]
         
-        for i in range(len(self.material_parameter)):
-            lst.append(self.material_parameter[i].get())
+        for i in range(len(self.entries)):
+            lst.append(self.entries[i].get())
         
         startmodule(lst)
         
@@ -117,6 +132,117 @@ class Display_Object:
             table_button = Button(table_frame, text=i)
             table_button.pack()
             i = i+1
+
+
+class Search_Frame:
+    
+    def __init__(self):
+        
+        print ('...loading: new search box')
+        
+        self.x=[]
+        
+        toplvl.topframe = Frame(toplvl.mainframe)
+        toplvl.topframe.pack(side=LEFT, fill=Y, expand=True)
+        toplvl.topframe.place(relx=0.01, rely=0.01, relheight=0.16, relwidth=0.49)
+        toplvl.topframe.configure(relief=GROOVE)
+        toplvl.topframe.configure(highlightbackground="#000000")
+        toplvl.topframe.configure(highlightcolor="black")
+        toplvl.topframe.configure(bd=2)
+        
+        displayframe()
+        
+        #Labels
+        self.searchL = Label(toplvl.topframe, text='Search for: ')
+        self.searchL.grid(row=1, column=0, sticky=E)
+        
+        #Entry boxes
+        self.searchE = Entry(toplvl.topframe)
+        self.searchE.delete(0, END)
+        self.searchE.insert(0, "Stopfen")
+        self.searchE.grid(row=2, column=1)
+        
+        self.tkvar = StringVar(toplvl.topframe)
+        choices = ['Name', 
+                'Adresse',
+                'Email',
+                'intID',
+                'extID',
+                'Gewicht',
+                'Preis(%)',
+                'Maße',
+                'Material',
+                'Hersteller',
+                'Preis']
+        self.tkvar.set('Such Parameter') # set the default option
+        
+        self.tkvar2 = StringVar(toplvl.topframe)
+        choices2 = ['Customer', 
+                'Article',
+                'Material']
+        self.tkvar2.set('Wähle DB') # set the default option
+        
+        popupMenu = OptionMenu(toplvl.topframe, self.tkvar, *choices)
+        popupMenu.grid(row = 2, column = 2)
+        
+        popupMenu2 = OptionMenu(toplvl.topframe, self.tkvar2, *choices2)
+        popupMenu2.grid(row = 2, column = 3)
+        
+        #Search Button
+        searchButt = Button(toplvl.topframe, text="Search")
+        searchButt.grid(row=4, column=0)
+        searchButt.config(command = lambda: [self.search_helper(self.searchE.get())])
+        
+        
+    def search_helper(self, search_word):
+        
+        ('... loading: search_helper')
+        
+#        print (self.tkvar2.get())
+        
+        optionX = self.tkvar2.get()
+        optDict = {'Customer' : coredb.get_all_customers,
+                   'Article' : coredb.get_all_articles,
+                   'Material' : coredb.get_all_materials,
+                   }
+        lst = optDict[optionX]()
+            
+        self.search_func(search_word, self.tkvar.get(), lst)
+        
+    def search_func(self, search_word, search_parameter, db_lst,):
+        
+        ('... loading: search_func')
+        
+        i=0
+        
+        optDict = {'Name' : 0, 
+                'Adresse' : 1,
+                'Email' : 2,
+                'intID' : 1,
+                'extID' : 2,
+                'Gewicht' : 3,
+                'Preis(%)' : 4,
+                'Maße' : 6,
+                'Material' : 7,
+                'Hersteller' : 1,
+                'Preis' : 2
+                }
+        s_p = optDict[search_parameter]
+        
+        print ('...loading: C-Checkbox/search_func')
+        
+        full_lst = db_lst
+        search_lst = []
+        
+        for x in full_lst:
+            if x[s_p] == search_word:
+                search_lst.append(full_lst[i])
+                i = i + 1
+
+            elif x[s_p] != search_word:
+                i = i + 1
+        
+        displaydb(search_lst)
 
 
 class Checkbox:
@@ -170,7 +296,7 @@ class Checkbox:
         self.checkVar2 = IntVar(master)
         checkbuttonA = Checkbutton(master, text = "Articles", variable = self.checkVar2)
         checkbuttonA.grid(row=3, column=2,)
-        checkbuttonA.select()
+#        checkbuttonA.select()
         
         self.checkVar3 = IntVar(master)
         checkbuttonM = Checkbutton(master, text = "Materials", variable = self.checkVar3)
@@ -195,6 +321,10 @@ class Checkbox:
         self.search_func(search_word, self.tkvar.get(), lst)
         
     def search_func(self, search_word, search_parameter, db_lst,):
+        
+        ('... loading: search_func')
+        
+        print (db_lst)
         
         i=0
         
@@ -552,8 +682,8 @@ def startmodule(x):
         
     optionX = x[0]
     optDict = {1 : coredb.update_article,
-               2 : coredb.get_everything,
-               3 : searchlist,
+               2 : coredb.update_customer,
+               3 : coredb.update_material,
                }
     print ('...Parameter: ', x)
     return optDict[optionX](x)
@@ -569,9 +699,10 @@ def searchlist():
     
     print ('...loading: searchlist')
     
-    box = Toplevel(toplvl.mainframe)
-    newboxclass = Checkbox(box)
+#    box = Toplevel(toplvl.mainframe)
+    newboxclass = Search_Frame()
     
+    db_var = newboxclass.tkvar2.get()
     
 def display_engines():
     
@@ -629,9 +760,17 @@ def displayhelper(x):
     displaydb(lst)
 
 
-def whatever(x):
+def modifying_helper(x):
     
     print ('...loading: displayhelper()')
+    
+    
+#    optionX = searchlist.newboxclass.tkvar2.get()
+#    optDict = {'Customer' : 1,
+#               'Article' : 2,
+#               'Material' : 3,
+#               }
+#    db_var = optDict[optionX]
     
     box = Modify_Object(x, 2)
 
@@ -666,7 +805,7 @@ def displaydb(lst):
     
     update2 = Button(toplvl.displayframe, 
                     text="modify_first_E", 
-                    command=lambda:[whatever(lst[0])])
+                    command=lambda:[modifying_helper(lst[0])])
     
     update2.pack(side=LEFT, padx=2, pady=2)
     

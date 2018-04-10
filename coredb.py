@@ -226,7 +226,45 @@ def update_article(lst):
                 'material': lst[8]
                 })
         
-        print ("Finished updating article %s" %lst[2])
+        print ("Finished updating article %s" %lst[1])
+        
+def update_customer(lst):
+    
+    print ('...loading: update_customer()')
+    
+    with conn:
+        c.execute("""UPDATE dbcustomers SET name = :name,
+                                         address = :address,
+                                         email = :email
+                    WHERE name = :name""", 
+                 {
+                'name': lst[1], 
+                'address': lst[2],
+                'email': lst[3]
+                })
+        
+        print ("Finished updating customer %s" %lst[1])
+        
+def update_material(lst):
+    
+    print ('...loading: update_material()')
+    
+    with conn:
+        c.execute("""UPDATE dbmaterials SET name = :name,
+                                          intID = :intID,
+                                          material = :material,
+                                          company = :company,
+                                          price = :price
+                    WHERE intID = :intID""", 
+                 {
+                'name': lst[1],
+                'intID': lst[2],
+                'material': lst[3],
+                'company': lst[4],
+                'price': lst[5]
+                })
+        
+        print ("Finished updating material %s" %lst[1])
 
 
 def remove_emp(emp):
