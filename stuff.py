@@ -116,7 +116,7 @@ def newcustomerbox():
     
     print ('...loading: new customer input box')
     
-    box = Tk()
+    box = Toplevel()
     box.geometry("600x300")
     box.title("New Customer")
     # x = list for data
@@ -153,6 +153,48 @@ def newcustomerbox():
                                          x.append(addressE.get()),
                                          x.append(emailE.get()),
                                          herewego(x), box.destroy()])
+    
+#def newcustomerbox():
+#    
+#    print ('...loading: new customer input box')
+#    
+#    box = Tk()
+#    box.geometry("600x300")
+#    box.title("New Customer")
+#    # x = list for data
+#    x = [1]
+#    
+#    #Labels
+#    nameL = Label(box, text='Company Name: ')
+#    nameL.grid(row=1, column=0, sticky=E)
+#    addressL = Label(box, text='Company Address: ')
+#    addressL.grid(row=2, column=0, sticky=E)
+#    emailL = Label(box, text='Email contact: ')
+#    emailL.grid(row=3, column=0, sticky=E)
+#    
+#    #Entry boxes
+#    nameE = Entry(box)
+#    nameE.delete(0, END)
+#    nameE.insert(0, "2P GmbH")
+#    nameE.grid(row=1, column=1)
+#    
+#    addressE = Entry(box)
+#    addressE.delete(0, END)
+#    addressE.insert(0, "34346 HMü")
+#    addressE.grid(row=2, column=1)
+#    
+#    emailE = Entry(box)
+#    emailE.delete(0, END)
+#    emailE.insert(0, "peterdermeter@gmx.de")
+#    emailE.grid(row=3, column=1)
+#    
+#    #OK Button
+#    insertButt = Button(box, text="Confirm")
+#    insertButt.grid(row=4, column=0)
+#    insertButt.config(command = lambda: [x.append(nameE.get()), 
+#                                         x.append(addressE.get()),
+#                                         x.append(emailE.get()),
+#                                         herewego(x), box.destroy()])
     
 
 def newarticlebox():
