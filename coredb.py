@@ -11,6 +11,8 @@ conn = sqlite3.connect('coredatabase.db')
 
 c = conn.cursor()
 
+# c.execute("""DROP TABLE dir_values""")
+
 #def closedb():
 #    conn.close()
 
@@ -37,13 +39,20 @@ c = conn.cursor()
 #            price real
 #            )""")
 
-#c.execute(""" CREATE TABLE utility_values (
+# c.execute(""" CREATE TABLE dir_values (
+#            file_name text,
+#            path_var text,
+#            intID int,
+#            time date
+#            )""")
+#
+# c.execute(""" CREATE TABLE utility_values (
 #            db_name text,
-#            last_intID text
+#            last_intID int
 #            )""")
 
 #c.execute(""" CREATE TABLE dbcustomers (
-#            intID text,
+#            intID int,
 #            name text,
 #            address text,
 #            email text,
@@ -51,8 +60,8 @@ c = conn.cursor()
 #            )""")
 #
 #c.execute(""" CREATE TABLE dbarticles (
+#            intID int,
 #            name text,
-#            intID text,
 #            extID text,
 #            weight real,
 #            ppcent real,
@@ -63,53 +72,55 @@ c = conn.cursor()
 #            )""")
 #    
 #c.execute(""" CREATE TABLE dbmaterials (
+#            intID int,
 #            name text,
-#            intID text,
 #            material text,
 #            company text,
 #            price real,
 #            time date
 #            )""")
-
-
-#def insert_newstuff(x, emp):
-#    
-#    print ('...loading: insert_newstuff()')
-#    
-#    with conn:
-#       c.execute("""INSERT INTO coredatabase1 VALUES (:type, :name, :address, :email, :intID, :extID, :weight, :ppcent, :mincost, :dimensions, :material, :company, :price)""", 
-#                 {
-#                'type':x,
-#                'name': emp.name, 
-#                'address': emp.address,
-#                'email': emp.email,
-#                'intID': emp.intID,
-#                'extID': emp.extID,
-#                'weight': emp.weight,
-#                'ppcent': emp.ppcent,
-#                'mincost': emp.mincost,
-#                'dimensions': emp.dimensions,
-#                'material': emp.material,
-#                'company': emp.company,
-#                'price': emp.price
-#                })
-#    get_everything()
+#
+#c.execute(""" CREATE TABLE dbmachines (
+#            intID int,
+#            name text,
+#            machine_group int,
+#            time date
+#            )""")
+#
+#c.execute(""" CREATE TABLE work_orders (
+#            intID int,
+#            article_name text,
+#            machine_group int,
+#            delivery_date = text,
+#            status = text,
+#            time date
+#            )""")
+#
+#c.execute(""" CREATE TABLE tools (
+#            intID int,
+#            name text,
+#            machine_group int,
+#            time date
+#            )""")
+#
     
 
 #***####################### ******* ############################***#
 #***####################### INSERT #############################***#
 #***####################### ******* ############################***#
 
-def insert_newcustomer(emp):
+def insert_newcustomer(lst):
     
     print ('...loading: insert_newcustomer()')
     
     with conn:
-       c.execute("""INSERT INTO dbcustomers VALUES (:name, :address, :email)""", 
+       c.execute("""INSERT INTO dbcustomers VALUES (:intID, :name, :address, :email, :time)""",
                  {
-                'name': emp.name, 
-                'address': emp.address,
-                'email': emp.email
+                'intID' : lst[1],
+                'name': lst[2],
+                'address': lst[3],
+                'email': lst[4],
+                'time' : lst[5]
                 })
 
 def insert_newarticle(lst):
@@ -117,7 +128,7 @@ def insert_newarticle(lst):
     print ('...loading: insert_newarticle()')
     
     with conn:
-       c.execute("""INSERT INTO dbarticles VALUES (:name, :intID, :extID, :weight, :ppcent, :cavities, :cycle_time, :material, :time)""", 
+       c.execute("""INSERT INTO dbarticles VALUES (:intID, :name, :extID, :weight, :ppcent, :cavities, :cycle_time, :material, :time)""",
                  {
                 'intID': lst[1],
                 'name': lst[2],
@@ -130,22 +141,39 @@ def insert_newarticle(lst):
                 'time': lst[9]
                 })
     
-    print ("Finished inserting new article -> %s" %lst[1])
+    print ("Finished inserting new article -> %s" %lst[2])
     
-def insert_newmaterial(emp):
+def insert_newmaterial(lst):
     
     print ('...loading: insert_newstuff()')
     
     with conn:
-       c.execute("""INSERT INTO dbmaterials VALUES (:name, :intID, :material, :company, :price)""", 
+       c.execute("""INSERT INTO dbmaterials VALUES (:intID, :name, :material, :company, :price, :time)""",
                  {
-                'name': lst[1],
+                'name': lst[2],
                 'intID': lst[1],
-                'material': lst[1],
-                'company': lst[1],
-                'price': lst[1]
+                'material': lst[3],
+                'company': lst[4],
+                'price': lst[5],
+                'time' : lst[6]
                 })
 
+
+def insert_new_path(lst):
+
+    print('...loading: insert_new_path()')
+    print(lst)
+
+    with conn:
+        c.execute("""INSERT INTO dir_values VALUES (:file_name, :path_var, :intID, :time)""",
+                  {
+                      'file_name': lst[0],
+                      'path_var': lst[1],
+                      'intID': lst[2],
+                      'time': lst[3]
+                  })
+
+    print("Finished inserting new path -> %s" % lst[1])
 #    customer = [1,2,3]
 #    articles = [1,4,5,6,7,10]
 #    material = [1,10,11,12]
@@ -153,31 +181,7 @@ def insert_newmaterial(emp):
 #***####################### ******* ############################***#
 #***####################### READ Table #########################***#
 #***####################### ******* ############################***#
-    
-    
-#def get_stuff_by_type(x):
-#    
-#    print ('...loading: get_stuff_by_type()')
-#    
-#    print (x)
-#    displayed = []    
-#    if x[0] == 1:
-#        print ('x[0]=1')
-#        c.execute("SELECT * FROM dbcustomers WHERE name=:name", {'name': x[1]})
-#        displayed = c.fetchall()
-#    elif x[0] == 2:
-#        print ('x[0]=2')
-#        c.execute("SELECT * FROM dbarticles WHERE name=:name", {'name': x[1]})
-#        displayed = c.fetchall()
-#    elif x[0] == 3:
-#        print ('x[0]=3')
-#        c.execute("SELECT * FROM dbmaterials WHERE name=:name", {'name': x[1]})
-#        displayed = c.fetchall()
-#        
-#    return displayed
-#       
-    
-#***###################################################***#
+
 def get_everything(x):
     optionX = x[1]
     optDict = {1 : get_all_customers,
@@ -193,18 +197,41 @@ def get_all_customers():
     c.execute("SELECT * FROM dbcustomers")
     return (c.fetchall())
 
+# def get_all_articles():
+#
+#     print ('...loading: get_all_articles()')
+#
+#     c.execute("SELECT * FROM dbarticles")
+#     return (c.fetchall())
+
+def get_path_var(x):
+
+    print ('...loading: get_all_articles()')
+
+    c.execute("SELECT path_var FROM dir_values WHERE intID = :intID", {'intID' : x})
+    return (c.fetchall())
+
 def get_all_articles():
-    
-    print ('...loading: get_all_articles()') 
-    
-    c.execute("SELECT * FROM dbarticles")
+
+    print ('...loading: get_all_articles()')
+
+    c.execute("SELECT intID, name, ppcent, material FROM dbarticles")
     return (c.fetchall())
 
 def get_all_materials():
     
-    print ('...loading: get_all_materials()') 
+    print ('...loading: get_all_materials(), hier simma')
+
     c.execute("SELECT * FROM dbmaterials")
     return (c.fetchall())
+
+def get_intID(x):
+
+    print('...loading: get_all_intIDs()')
+
+    c.execute("SELECT last_intID FROM utility_values WHERE db_name = :db_name", {'db_name = x'})
+    return (c.fetchone())
+
 
 #***####################### ******* ############################***#
 #***####################### UPDATE  ############################***#
@@ -295,25 +322,21 @@ def delete_customer(lst):
                 })
         
         print ("Deleted customer %s" %lst[1])
-        
-        
-#def delete_customer(lst):
-#    
-#    print ('...loading: update_customer()')
-#    
-#    print (lst)
-#    
-#    with conn:
-#        c.execute("""DELETE FROM dbcustomers WHERE name = :name,
-#                                                  address = :address,
-#                                                  email = :email""",
-#                 {
-#                'name': lst[1], 
-#                'address': lst[2],
-#                'email': lst[3]
-#                })
-#        
-#        print ("Deleted customer %s" %lst[1])
+
+
+def delete_dir_values(lst):
+
+    print('...loading: delete_dir_values()')
+
+    print(lst)
+
+    with conn:
+        c.execute("""DELETE FROM dir_values WHERE file_name = :name""",
+                  {
+                      'name': lst
+                  })
+
+        print("Deleted dir_value with file_name %s" % lst)
 
 
 def remove_emp(emp):
