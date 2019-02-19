@@ -1,0 +1,7 @@
+<table>
+  {% for r in results %}
+    {% cycle '<tr>' '' '' '' %}
+      <td>{{r.content}}</td>
+    {% cycle '' '' '' '</tr>' %}
+  {% endfor %}
+</table>
