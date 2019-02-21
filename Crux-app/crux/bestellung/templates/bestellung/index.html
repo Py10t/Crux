@@ -1,17 +1,27 @@
-<table border="3">
-<thead>
-<tr>Heading 1</tr>
-<tr>Heading 2</tr>
-</thead>
-<tbody>
-<tr>
-<td contenteditable='true'></td>
-<td contenteditable='true'></td>
-</tr>
-<br><button type="button">Click Me!</button>
-<!-- <tr>
-<td contenteditable='true'></td>
-<td contenteditable='true'></td>
-</tr> -->
-</tbody>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th style="width:130px">Artikel</th>
+    <th style="width:80px">{{ aktuelle_kw_string }}</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
 </table>
+
+</body>
+</html>
