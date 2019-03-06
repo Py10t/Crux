@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'homepage.apps.HomepageConfig',
     'bestellung.apps.BestellungConfig',
     'stock.apps.StockConfig',
     'polls.apps.PollsConfig',
