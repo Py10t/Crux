@@ -1,7 +1,14 @@
-<table>
-  {% for r in results %}
-    {% cycle '<tr>' '' '' '' %}
-      <td>{{r.content}}</td>
+<h2>LAGER</h2>
+<table border="1">
+  <th>Artikel ext.</th>
+  <th>Material</th>
+  <th>Lagerbestand</th>
+  {% for r in all_articles %}
+  {% cycle '<tr>' '' '' %}
+  <td><a href={{r.id}}>{{r.name}}</a></td>
+  <td>{{r.material}}</td>
+  <td>{{r.stock_amount}}</td>
+  </tr>
     {% cycle '' '' '' '</tr>' %}
   {% endfor %}
 </table>

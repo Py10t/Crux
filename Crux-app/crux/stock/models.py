@@ -8,7 +8,8 @@ class Material(models.Model):
     company =  models.CharField(max_length=250)
 
     def __str__(self):
-        return self.name + ' | ' + self.chem_name + ' | ' + self.company
+        return self.name
+        """ + ' | ' + self.chem_name + ' | ' + self.company"""
 
 
 class Article(models.Model):
