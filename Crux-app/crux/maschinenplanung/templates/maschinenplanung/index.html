@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h2>Maschinenplanung</h2>
+<h2>Beispiel</h2>
 <div class="rTable">
 <div class="rTableRow">
 <div class="rTableHead"><strong>Montag</strong></div>
@@ -16,26 +16,34 @@
 <div class="rTableRow">
 <div class="rTableCell">Dienstag</div>
 <div class="rTableCell"><a href="tel:0123456785">0123 456 785</a></div>
-<div class="rTableCell"><img src="images/check.gif" alt="checked" /></div>
+<div class="rTableCell">LALALALA</div>
 </div>
 <div class="rTableRow">
 <div class="rTableCell">Mittwoch</div>
 <div class="rTableCell"><a href="tel:9876532432">9876 532 432</a></div>
-<div class="rTableCell"><img src="images/check.gif" alt="checked" /></div>
+<div class="rTableCell">LALLALLA2</div>
 </div>
 </div>
 
 <h2>Maschinenplanung</h2>
 
-<div class="rTable_left">
-<div class="rTableRow">
-<div class="rTableHead"><strong>Montag</strong></div>
-</div>
-</div>
 
 <div class="rTable_plan">
 <div class="rTableRow">
-<div class="rTableHead">Montag</div>
+<div class="rTableHead">Maschine
+  {% for i in day_week_month %}
+  {% cycle '<div class="rTableRow">' '' '' %}
+    <a href={{r.id}}>Hallo</a><br>
+  {% cycle '' '' '' '</div>' %}
+  {% endfor %}
+</div>
+<div class="rTableHead">Montag
+  {% for i in day_week_month %}
+  {% cycle '<div class="rTableRow">' '' '' %}
+    <a href={{r.id}}>Hallo</a><br>
+  {% cycle '' '' '' '</div>' %}
+  {% endfor %}
+</div>
 <div class="rTableHead">Dienstag</div>
 <div class="rTableHead">Mittwoch</div>
 <div class="rTableHead">Donnerstag</div>
