@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'textdocs.apps.TextdocsConfig',
     'maschinenplanung.apps.MaschinenplanungConfig',
     'homepage.apps.HomepageConfig',
     'bestellung.apps.BestellungConfig',
