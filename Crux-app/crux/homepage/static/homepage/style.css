@@ -1,12 +1,12 @@
 .btn-group .button {
   background-color: inherit;
   border: none;
-  color: white;
+  color: black;
   padding: 200px 13%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1em;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -17,15 +17,13 @@
 
 .btn-group .button:hover {
   background-color: white;
-  color: black;
-  border: 2px solid black;
+  border: 4px solid black;
 }
 .btn-group .button_blue {
   background-color: blue;
 }
 .btn-group .button_yellow {
   background-color: yellow;
-  color: black;
 }
 
 .button1 {
@@ -34,7 +32,7 @@
   border: none;
   border-top: none;
   border-bottom: none;
-  color: white;
+  color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -46,8 +44,7 @@
 }
 
 .button1:hover {
-  background-color: red;
-  color: black;
+  background-color: green;
   border: none;
   border-top: none;
   border-bottom: none;
@@ -61,7 +58,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1em;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -73,6 +70,6 @@
 #boxed:hover {
   background-color: white;
   color: white;
-  border: 2px solid black;
+  border: 4px solid black;
   visibility: visible;
 }

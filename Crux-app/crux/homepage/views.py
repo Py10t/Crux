@@ -18,8 +18,3 @@ def index(request):
     }
 
     return HttpResponse(template.render(context, request))
-
-
-from django.shortcuts import render
-
-# Create your views here.
