@@ -16,8 +16,4 @@ def detail(request, article_id):
     return HttpResponse("<h2>Details for Article id: " + str(article_id) + "</h2")
 
 def index(request):
-    all_articles = Article.objects.all()
-    template = loader.get_template('stock/index.html')
-    context = {'all_articles': all_articles}
-
-    return HttpResponse(template.render(context, request))
+    return render(request, 'stock/index.html', {'articles': Article.objects.all()})

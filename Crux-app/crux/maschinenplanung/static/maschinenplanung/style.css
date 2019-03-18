@@ -1,33 +1,25 @@
-.rTable_left {
-  	display: table;
-  	width: 18%;
+.git_grid {
+    display: grid;
+
+               Breite der Spalten (z.B. als px, %)
+                            +
+                            |
+    grid-template-columns: 32% 32% 32%;
+
+                +-- Abstand der Spalten und Zeilen
+                |
+    grid-gap: 10px;
 }
-.rTable_plan {
-  	display: table;
-  	width: 90%;
-  	float: left;
+.elem1 {
+   grid-row: 1;
+   grid-column: 1 / 3; // Element von Linie 1 bis Linie 3
 }
-.rTableRow {
-  	display: table-row;
+
+table, th, td {
+  border: 3px solid black;
+  padding: 15px;
 }
-.rTableHeading {
-  	display: table-header-group;
-  	background-color: #ddd;
-}
-.rTableCell, .rTableHead {
-  	display: table-cell;
-  	border: 1px solid #999999;
-}
-.rTableHeading {
-  	display: table-header-group;
-  	background-color: #ddd;
-  	font-weight: bold;
-}
-.rTableFoot {
-  	display: table-footer-group;
-  	font-weight: bold;
-  	background-color: #ddd;
-}
-.rTableBody {
-  	display: table-row-group;
+
+tr {
+width=1000px;
 }

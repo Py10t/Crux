@@ -1,63 +1,78 @@
-{% load static %}
-
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'maschinenplanung/style.css' %}">
 <html>
 <head>
 </head>
 <body>
 
-<h2>Beispiel</h2>
-<div class="rTable">
-<div class="rTableRow">
-<div class="rTableHead"><strong>Montag</strong></div>
-<div class="rTableHead"><span style="font-weight: bold;">Telephone</span></div>
-<div class="rTableHead">&nbsp;</div>
-</div>
-<div class="rTableRow">
-<div class="rTableCell">Dienstag</div>
-<div class="rTableCell"><a href="tel:0123456785">0123 456 785</a></div>
-<div class="rTableCell">LALALALA</div>
-</div>
-<div class="rTableRow">
-<div class="rTableCell">Mittwoch</div>
-<div class="rTableCell"><a href="tel:9876532432">9876 532 432</a></div>
-<div class="rTableCell">LALLALLA2</div>
-</div>
-</div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Crux</a>
+        </div>
+
+    </div>
+</nav>
 
 <h2>Maschinenplanung</h2>
 
-
-<div class="rTable_plan">
-<div class="rTableRow">
-<div class="rTableHead">Maschine
-  {% for i in day_week_month %}
-  {% cycle '<div class="rTableRow">' '' '' %}
-    <a href={{r.id}}>Hallo</a><br>
-  {% cycle '' '' '' '</div>' %}
-  {% endfor %}
-</div>
-<div class="rTableHead">Montag
-  {% for i in day_week_month %}
-  {% cycle '<div class="rTableRow">' '' '' %}
-    <a href={{r.id}}>Hallo</a><br>
-  {% cycle '' '' '' '</div>' %}
-  {% endfor %}
-</div>
-<div class="rTableHead">Dienstag</div>
-<div class="rTableHead">Mittwoch</div>
-<div class="rTableHead">Donnerstag</div>
-<div class="rTableHead">Freitag</div>
-<div class="rTableHead">Samstag</div>
-<div class="rTableHead">Sonntag</div>
-</div>
-</div>
-  </tr>
-  {% for i in spalten %}
-  {% cycle '<tr>' '' '' %}
-  {% cycle '' '' '' '</tr>' %}
-  {% endfor %}
+<table border="3">
+    <tr>
+        <td>Maschine</td>
+        <td>Montag</td>
+        <td>Dienstag</td>
+        <td>Mittwoch</td>
+        <td>Donnerstag</td>
+        <td>Freitag</td>
+        <td>Samstag</td>
+        <td>Sonntag</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td colspan="7">
+            <svg width="100%" height="100%">
+            <rect height="100%" width="80%" y="0" x="0" fill="#dcdcdc" />
+            <text y="44" x="169" fill="#312583">elem1</text>
+            <rect height="100%" width="10%" y="0" x="359" fill="#000000" />
+            <text y="44" x="169" fill="#312583">elem1.1</text>
+            </svg>
+        </td>
+    </tr>
+    <tr><td>2</td>
+            <td colspan="7">
+            <svg viewBox="0 0 583 588" width="100%" height="100%">
+            <rect height="500" width="1583" y="0" x="0" fill="#dcdcdc" />
+            <text y="44" x="169" fill="#312583">elem1</text>
+            </svg>
+        </td>
+    </tr>
+    <tr><td>3</td></tr>
+    <tr><td>4</td></tr>
+    <tr><td>5</td></tr>
+    <tr><td>6</td></tr>
+    <tr><td>7</td></tr>
+    <tr><td>8</td></tr>
 </table>
-
+<!--<div>
+    <svg viewBox="0 0 583 588" width="100%" height="100%">
+    <rect height="588" width="583" y="0" x="0" fill="#dcdcdc" />
+    <rect height="158.7" width="368.6" y="12.08" x="11.8" fill="#e5b2b2" />
+    <rect height="158.7" width="368.6" y="179.1" x="11.8" fill="#b2e5b2" />
+    <rect height="228.4" width="180" y="349.5" x="11.8" fill="#b2e5e5" />
+    <rect height="228.4" width="180" y="349.5" x="202.2" fill="#b2b2e5" />
+    <rect height="228.4" width="180" y="349.5" x="392.7" fill="#e5b2e5" />
+    <rect height="328.3" width="180.5" y="11.24" x="394.6" fill="#e5e5b2" />
+    <text y="44" x="169" fill="#312583">elem1</text>
+    <text y="44" x="441" fill="#312583">elem2</text>
+    <text y="217" x="163" fill="#312583">elem3</text>
+    <text y="389" x="54" fill="#312583">elem4</text>
+    <text y="389" x="249" fill="#312583">elem5</text>
+    <text y="389" x="442" fill="#312583">elem6</text>
+    </svg>
+</div>
+-->
 </body>
 </html>

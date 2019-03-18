@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_tables2',
     'textdocs.apps.TextdocsConfig',
     'maschinenplanung.apps.MaschinenplanungConfig',
     'homepage.apps.HomepageConfig',

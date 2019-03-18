@@ -1,14 +1,24 @@
-<h2>LAGER</h2>
-<table border="1">
-  <th>Artikel ext.</th>
-  <th>Material</th>
-  <th>Lagerbestand</th>
-  {% for r in all_articles %}
-  {% cycle '<tr>' '' '' %}
-  <td><a href={{r.id}}>{{r.name}}</a></td>
-  <td>{{r.material}}</td>
-  <td>{{r.stock_amount}}</td>
-  </tr>
-    {% cycle '' '' '' '</tr>' %}
-  {% endfor %}
-</table>
+{# stock/templates/stock/index.html #}
+{% load render_table from django_tables2 %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!doctype html>
+<html>
+    <head>
+        <title>Lagerbestand</title>
+    </head>
+    <body>
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Crux</a>
+        </div>
+
+    </div>
+    </nav>
+
+        {% render_table articles %}
+    </body>
+</html>
