@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django_tables2 import RequestConfig
 from django.template import loader
+from .models import Order
+from .tables import OrderTable
 
 import datetime
 
@@ -8,15 +10,6 @@ import datetime
 
 def index(request):
 
-    dt = datetime.datetime.now()
-    aktuelle_kw = dt.isocalendar()[1]
-    aktuelle_kw_string = "KW " + str(aktuelle_kw)
-
-    template = loader.get_template('bestellung/index.html')
-    context = {
-        'aktuelle_kw_string': aktuelle_kw_string
-    }
-
-
-
-    return HttpResponse(template.render(context, request))
+    table = OrderTable(Order.objects.all())
+    RequestConfig(request).configure(table)
+    return render(request, 'bestellung/index.html', {'table': table})

@@ -23,4 +23,4 @@ class Article(models.Model):
     price_per_piece = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
-        return self.name + ' | ' + str(self.material) + ' | ' + str(self.stock_amount)
+        return self.name + ' | ' + str(self.material)

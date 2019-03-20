@@ -12,9 +12,4 @@ def index(request):
     aktuelle_kw = dt.isocalendar()[1]
     aktuelle_kw_string = "KW " + str(aktuelle_kw)
 
-    template = loader.get_template('homepage/index.html')
-    context = {
-        'aktuelle_kw_string': aktuelle_kw_string
-    }
-
-    return HttpResponse(template.render(context, request))
+    return render(request, 'homepage/index.html', {'aktuelle_kw_string': aktuelle_kw_string})

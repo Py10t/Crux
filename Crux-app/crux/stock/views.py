@@ -6,13 +6,6 @@ from django.template import loader
 from .tables import ArticleTable
 # Create your views here.
 
-"""def index(request):
-    all_articles = Article.objects.all()
-    html = ''
-    for article in all_articles:
-        url = '/stock/' + str(article.id) + '/'
-        html += '<a href="' + url + '">' + article.name + '</a><br>'
-    return HttpResponse(html)"""
 
 def detail(request, article_id):
     return HttpResponse("<h2>Details for Article id: " + str(article_id) + "</h2")

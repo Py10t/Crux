@@ -1,27 +1,63 @@
+{% load render_table from django_tables2 %}
+<!doctype html>
 <html>
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
-</head>
-<body>
+    <head>
+        <title>Crux: Bestellungen</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+  .col-1 {
+    background: #D7E8D4;
+    flex: 1;
+  }
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+  }
+  .content > article {
+    flex: 4;
+    min-height: 60vh;
+  }
+  header, footer {
+    background: yellowgreen;
+    height: 20vh;
+  }
+  header, footer, article {
+    padding: 1em;
+  }
+    </style>
+    <body>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
 
-<table>
-  <tr>
-    <th style="width:130px">Artikel</th>
-    <th style="width:80px">{{ aktuelle_kw_string }}</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$80</td>
-  </tr>
-</table>
+        <!-- Header -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/homepage/">Crux</a>
+        </div>
+    </div>
+    </nav>
+    <!--<div class="col-2">-->
+    <h2>Bestellungen</h2>
+    <main class="content">
 
-</body>
+        {% render_table table %}
+
+    </main>
+  </div>
+
+    </body>
 </html>

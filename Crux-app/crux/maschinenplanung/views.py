@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.template import loader
 from stock.models import Article
 # Create your views here.

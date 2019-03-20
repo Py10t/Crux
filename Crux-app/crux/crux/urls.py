@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.conf.urls import url,include
 
 
 urlpatterns = [
@@ -26,4 +27,8 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('stock/', include('stock.urls')),
     path('admin/', admin.site.urls),
+    # url(r'^login/$', login, {'template_name': 'toggle_login.html'},
+    #     name='mysite_login'),
+    # url(r'^logout/$', 'django.contrib.auth.views.logout',
+    #     {'next_page': reverse_lazy('marcador_bookmark_list')}, name='mysite_logout'),
 ]
