@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     # ex: bestellung/
-    path('', views.index, name='index'),
+    path('', views.index, name='bestellung_index'),
+    path('updated/<int:record_id>', views.update_order, name='update_bestellung'),
 ]

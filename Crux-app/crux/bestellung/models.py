@@ -8,6 +8,7 @@ class Order(models.Model):
     amount = models.BigIntegerField()
     order_date = models.DateField(("Bestelldatum"), default=datetime.date.today)
     delivery_date = models.DateField(("Lieferdatum"), default=datetime.date.today)
+    order_status = models.CharField(max_length=250, default="Bestellung")
 
     def __str__(self):
         return self.article.name + ' | ' + str(self.amount) + ' | ' + str(self.company)

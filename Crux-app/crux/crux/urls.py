@@ -24,6 +24,7 @@ urlpatterns = [
     path('textdocs/', include('textdocs.urls')),
     path('maschinenplanung/', include('maschinenplanung.urls')),
     path('bestellung/', include('bestellung.urls')),
+    path('auftrag/', include('auftrag.urls')),
     path('polls/', include('polls.urls')),
     path('stock/', include('stock.urls')),
     path('admin/', admin.site.urls),

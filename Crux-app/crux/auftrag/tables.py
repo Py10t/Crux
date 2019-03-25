@@ -1,7 +1,7 @@
 # stock/tables.py
 import django_tables2 as tables
 from django_tables2 import TemplateColumn
-from .models import Order
+from bestellung.models import Order
 
 class OrderTable(tables.Table):
     class Meta:
@@ -10,4 +10,4 @@ class OrderTable(tables.Table):
 
 
     my_column = tables.TemplateColumn(verbose_name=('Optionen'),
-                                      template_name='bestellung/next_button.html')
+                                      template_name='auftrag/next_button.html')

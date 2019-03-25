@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'maschinenplanung.apps.MaschinenplanungConfig',
     'homepage.apps.HomepageConfig',
     'bestellung.apps.BestellungConfig',
+    'auftrag.apps.AuftragConfig',
     'stock.apps.StockConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
