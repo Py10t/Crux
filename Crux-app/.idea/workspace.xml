@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3c1e1-153a-48bb-8d74-42adbb2b4c43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crux/bestellung/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/form_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/order_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/auftrag/templates/auftrag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/auftrag/templates/auftrag/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/auftrag/templates/auftrag/next_button.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/auftrag/templates/auftrag/next_button.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/auftrag/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/auftrag/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/tables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/next_button.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/next_button.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/crux/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Crux.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Salary_Data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../basedata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coredatabase.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coredb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stuff.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +135,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="70" />
     <option name="y" value="104" />
     <option name="width" value="1440" />
@@ -200,6 +193,14 @@
               <item name="crux" type="462c0819:PsiDirectoryNode" />
               <item name="bestellung" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Crux-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Crux-app" type="462c0819:PsiDirectoryNode" />
+              <item name="crux" type="462c0819:PsiDirectoryNode" />
+              <item name="bestellung" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="bestellung" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Crux-app" type="b2602c69:ProjectViewProjectNode" />
@@ -288,10 +289,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.60455036" visible="true" weight="0.13272922" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.60455036" visible="true" weight="0.13272922" />
       <window_info id="Structure" order="2" sideWeight="0.3954496" side_tool="true" weight="0.12313433" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.32936078" />
@@ -305,7 +306,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info active="true" anchor="right" id="Run" order="3" visible="true" weight="0.32942432" />
-      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.32942432" />
+      <window_info anchor="right" id="Terminal" order="4" visible="true" weight="0.32942432" />
       <window_info anchor="right" id="Python Console" order="5" weight="0.32942432" />
     </layout>
     <layout-to-restore>
