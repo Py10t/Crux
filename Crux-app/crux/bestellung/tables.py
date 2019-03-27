@@ -7,6 +7,7 @@ class OrderTable(tables.Table):
     class Meta:
         model = Order
         template_name = 'django_tables2/bootstrap.html'
+        exclude = ['order_status'] # <- note the extra comma here, has to be a tuple
 
 
     my_column = tables.TemplateColumn(verbose_name=('Optionen'),
