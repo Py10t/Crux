@@ -1,7 +1,7 @@
 # Crux
 first time. :( i'm nervous
 
-Python Programm für Lagerhaltung. Spezielles Modul für das Lager einer Firma, die Kunststoffprodukte herstellt (Abk. KSM).
+Python Programm(web app) für Lagerhaltung. Spezielles Modul für das Lager einer Firma, die Kunststoffprodukte herstellt (Abk. KSM).
 
 * Lager erstellen und modifizieren/drucken
 * KSM: 
