@@ -17,4 +17,6 @@ Python Programm (Web App mit Django) für Lagerhaltung. Spezielles Modul für da
   * Auswertung der monatlichen Herstellungsmengen
   * Kostenübersicht
   
-* einiges mehr, da mein Fokus auf Flexibilität und Erweiterbarkeit liegt
+* Fokus liegt auf Flexibilität und Erweiterbarkeit
+
+* einiges mehr. :)
