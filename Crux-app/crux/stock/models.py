@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -24,3 +25,24 @@ class Article(models.Model):
 
     def __str__(self):
         return self.name + ' | ' + str(self.material)
+
+
+class Customer(models.Model):
+    name = models.CharField(("Material"), max_length=250)
+    adress = models.CharField(("Material"), max_length=250)
+    phone = models.CharField(("Material"), max_length=250)
+    email = models.EmailField
+
+
+
+# Nummern für z.B. Rechnungen und andere interne Dokumente
+class Nummernkreise(models.Model):
+    year = models.BigIntegerField(default=19)
+    order_number = models.BigIntegerField(default=0)
+    task_number = models.BigIntegerField(default=0)
+    prod_number = models.BigIntegerField(default=0)
+    delivery_number = models.BigIntegerField(default=0)
+    invoice_number = models.BigIntegerField(default=0)
+
+    def __str__(self):
+        return 'Nummernkreis PK=' + str(self.pk)

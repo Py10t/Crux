@@ -1,0 +1,63 @@
+{% load render_table from django_tables2 %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Eine neue Bestellung eingeben</h3>
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'bestellung/form_template2.html' %}
+                         <div class="form-group">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Wie erstelle ich einen Auftrag ?</h3>
+                    <ul>
+                        <li>Wählen Sie einen Artikel aus der Liste.</li>
+                        <li>Falls nicht vorhanden. Erstellen Sie einen neuen Artikel im Lager.</li>
+                        <li>Füllen Sie die restlichen Felder aus.</li>
+                        <li>Datum Format: %Jahr-%Monat-%Tag.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Aufträge</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
+            aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          {% for field in form2 %}
+          <th class="text-center">{{ field.label_tag }}</th>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for field in form2 %}
+          <td class="pt-3-half" contenteditable="true">{{ field }}</td>
+          {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}Neuer Benutzer{% endblock %}
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Neuen Benutzer erstellen</h3>
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'homepage/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Erstellen</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Wie erstelle ich einen Auftrag ?</h3>
+                    <ul>
+                        <li>Wählen Sie einen Artikel aus der Liste.</li>
+                        <li>Falls nicht vorhanden. Erstellen Sie einen neuen Artikel im Lager.</li>
+                        <li>Füllen Sie die restlichen Felder aus.</li>
+                        <li>Datum Format: %Jahr-%Monat-%Tag.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

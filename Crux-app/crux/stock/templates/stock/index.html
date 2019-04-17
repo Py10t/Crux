@@ -1,24 +1,14 @@
-{# stock/templates/stock/index.html #}
-{% load render_table from django_tables2 %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!doctype html>
-<html>
-    <head>
-        <title>Lagerbestand</title>
-    </head>
-    <body>
+{% extends 'stock/base.html' %}
 
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+{% block addlink %}
 
-        <!-- Header -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/homepage/">Crux</a>
-        </div>
+{% url 'add_bestellung' %}
 
-    </div>
-    </nav>
+{% endblock %}
+
+
+{% block body %}
 
         <a href="/stock/article/">Artikel</a>
-    </body>
-</html>
+
+{% endblock %}

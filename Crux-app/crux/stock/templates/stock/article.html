@@ -1,72 +1,55 @@
-{# tutorial/templates/tutorial/people.html #}
+{% extends 'stock/base.html' %}
 {% load render_table from django_tables2 %}
-<!doctype html>
-<html>
-    <head>
-        <title>Crux: Lager->Artikel</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    </head>
-    <style>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0;
-  }
-  .col-1 {
-    background: #D7E8D4;
-    flex: 1;
-  }
-  .col-2 {
-    display: flex;
-    flex-direction: column;
-    flex: 5;
-  }
-  .content {
-    display: flex;
-    flex-direction: row;
-  }
-  .content > article {
-    flex: 4;
-    min-height: 60vh;
-  }
-  header, footer {
-    background: yellowgreen;
-    height: 20vh;
-  }
-  header, footer, article {
-    padding: 1em;
-  }
-    </style>
-    <body>
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
 
-        <!-- Header -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/homepage/">Crux</a>
-        </div>
-        <form class="navbar-form navbar-left" role="search" method="get" action="">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
-                </div>
-                <button type="submit" class="btn btn-default">Search</button>
-        </form>
+{% block body %}
+<style>
+* {
+box-sizing: border-box;
+}
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+margin: 0;
+}
+.col-1 {
+background: #D7E8D4;
+flex: 1;
+}
+.col-2 {
+display: flex;
+flex-direction: column;
+flex: 5;
+}
+.content {
+display: flex;
+flex-direction: row;
+}
+.content > article {
+flex: 4;
+min-height: 60vh;
+}
+header, footer {
+background: yellowgreen;
+height: 20vh;
+}
+header, footer, article {
+padding: 1em;
+}
+</style>
 
-    </div>
-    </nav>
-    <div class="col-2">
-  	<header>Header</header>
-    <main class="content">
+<title>{% block title %}Lager: Artikel{% endblock %}</title>
 
-        {% render_table table %}
+<body>
+<div class="col-2">
+<header>Header</header>
+<main class="content">
 
-    </main>
-  	<footer>Footer</footer>
-  </div>
+    {% render_table table %}
 
-    </body>
-</html>
+</main>
+<footer>Footer</footer>
+</div>
+
+</body>
+{% endblock %}

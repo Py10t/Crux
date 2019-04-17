@@ -1,23 +1,10 @@
-<!-- Loads the path to your static files -->
+{% extends 'homepage/base.html' %}
 {% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css' %}">
 
-<html>
-<head>
-</head>
-<body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
 
-        <!-- Header -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="">Crux</a>
-        </div>
 
-    </div>
-</nav>
+{% block body %}
 
 <h2>Hauptmenü</h2>
 
@@ -75,5 +62,4 @@
   Sorry, your browser does not support inline SVG.
 </svg>
 
-</body>
-</html>
+{% endblock %}
