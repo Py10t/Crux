@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3c1e1-153a-48bb-8d74-42adbb2b4c43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/collective_order_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/collective_order_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/form_template2.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/templates/bestellung/form_template2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crux/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/crux/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/tables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/templates/stock/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/templates/stock/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/templates/stock/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/templates/stock/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +21,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crux/bestellung/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crux/stock/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -58,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crux/stock/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+            <state relative-caret-position="714">
+              <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="29" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -73,11 +69,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crux/stock/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crux/bestellung/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="7" column="53" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -156,7 +158,6 @@
         <option value="$PROJECT_DIR$/crux/stock/templates/stock/article.html" />
         <option value="$PROJECT_DIR$/crux/bestellung/templates/bestellung/order_form.html" />
         <option value="$PROJECT_DIR$/crux/homepage/templates/homepage/registration_form.html" />
-        <option value="$PROJECT_DIR$/crux/stock/urls.py" />
         <option value="$PROJECT_DIR$/crux/stock/forms.py" />
         <option value="$PROJECT_DIR$/crux/homepage/templates/homepage/base.html" />
         <option value="$PROJECT_DIR$/crux/homepage/templates/homepage/index.html" />
@@ -189,6 +190,7 @@
         <option value="$PROJECT_DIR$/crux/stock/models.py" />
         <option value="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html" />
         <option value="$PROJECT_DIR$/crux/stock/views.py" />
+        <option value="$PROJECT_DIR$/crux/stock/urls.py" />
       </list>
     </option>
   </component>
@@ -220,22 +222,7 @@
               <item name="Crux-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="Crux-app" type="462c0819:PsiDirectoryNode" />
               <item name="crux" type="462c0819:PsiDirectoryNode" />
-              <item name="textdocs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Crux-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Crux-app" type="462c0819:PsiDirectoryNode" />
-              <item name="crux" type="462c0819:PsiDirectoryNode" />
-              <item name="textdocs" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Crux-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Crux-app" type="462c0819:PsiDirectoryNode" />
-              <item name="crux" type="462c0819:PsiDirectoryNode" />
-              <item name="textdocs" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="textdocs" type="462c0819:PsiDirectoryNode" />
+              <item name="bestellung" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -308,7 +295,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5460455" visible="true" weight="0.17377399" />
       <window_info id="Favorites" order="1" sideWeight="0.4539545" side_tool="true" weight="0.15298508" />
@@ -507,13 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crux/bestellung/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="70" lean-forward="true" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crux/bestellung/templates/bestellung/form_template.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -642,26 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crux/stock/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crux/bestellung/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crux/bestellung/tables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -713,16 +672,6 @@
     <entry file="file://$PROJECT_DIR$/crux/stock/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/crux/stock/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -736,6 +685,40 @@
           <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crux/stock/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crux/bestellung/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="53" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crux/bestellung/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crux/stock/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
