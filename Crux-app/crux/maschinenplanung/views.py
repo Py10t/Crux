@@ -5,5 +5,6 @@ from stock.models import Article
 
 
 def index(request):
+    """renders index view, needs args for rectangle sizes"""
     day_week_month = [1, 2, 3, 4, 5, 6, 7]
     return render(request, 'maschinenplanung/index.html', {'articles': Article.objects.all()})

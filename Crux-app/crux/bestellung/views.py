@@ -4,7 +4,7 @@ from .models import Order
 from stock.models import Nummernkreise
 from .tables import OrderTable
 from django.shortcuts import redirect
-from .forms import OrderForm, CollectiveOrderForm, CollectiveOrderForm2
+from .forms import OrderForm, CollectiveOrderForm
 
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # gets table data and displays it
 def index(request):
-
+    """index view is a table showing all orders"""
     table_single = OrderTable(Order.objects.filter(order_status="Bestellung", collection=False))
     table_collection = OrderTable(Order.objects.filter(order_status="Bestellung", collection=True))
     RequestConfig(request).configure(table_single)
@@ -25,7 +25,7 @@ def index(request):
 # gets record_id from the table to update corresponding object/obj.order_status and take it to the next lvl
 # afterwards page refresh
 def update_order(request, record_id):
-
+    """update orders order_status überführt von einer Stufe zur nächsten"""
     obj = Order.objects.get(pk=record_id)
     obj.order_status = 'Auftrag'
     obj.save()
@@ -34,6 +34,7 @@ def update_order(request, record_id):
     return response
 
 def create_order(request):
+    """create a single new order"""
     form = OrderForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         order = form.save(commit=False)
@@ -57,10 +58,21 @@ def create_order(request):
     return render(request, 'bestellung/order_form.html', context)
 
 def create_collective_order(request):
+    """create multiple orders that should refer to the same name"""
     form = CollectiveOrderForm(request.POST or None, request.FILES or None)
-    form2 = CollectiveOrderForm2(request.POST or None, request.FILES or None)
+    print(CollectiveOrderForm)
+    print(type(CollectiveOrderForm))
     if form.is_valid():
+        print("FORM STARTS")
+        for key in request.POST:
+            print(key + "=")
+            value = request.POST[key]
+            print(value)
+        print("FORM ENDS")
+
+
         order = form.save(commit=False)
+        # print(order)
 
         # this gets the order_number from DB, increment and save
         # db_number = Nummernkreise.objects.values_list('order_number', flat=True).get(pk=1)
@@ -69,15 +81,15 @@ def create_collective_order(request):
         # obj.order_number +=1
         # order.order_number_int = obj.order_number
 
-        order.save()
+        # order.save()
         # obj.save()
 
-        response = redirect('/bestellung/')
+        response = redirect('/bestellung/new_collective_order/')
         return response
 
     context = {
         "form": form,
-        "form2": form2
+        # "form2": form2
     }
     return render(request, 'bestellung/collective_order_form.html', context)
 

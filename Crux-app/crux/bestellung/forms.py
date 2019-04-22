@@ -15,10 +15,4 @@ class CollectiveOrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ['order_number_ext', 'collection_name', 'company', 'order_date']
-
-class CollectiveOrderForm2(forms.ModelForm):
-
-    class Meta:
-        model = Order
-        fields = ['article', 'amount', 'order_date']
+        fields = ['order_number_ext', 'collection_name', 'company', 'order_date', 'article', 'amount', 'delivery_date']

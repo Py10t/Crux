@@ -12,6 +12,9 @@
                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'bestellung/form_template2.html' %}
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Erstellen</button>
+                        </div>
                          <div class="form-group">
                         </div>
                     </form>
@@ -36,28 +39,6 @@
     </div>
 </div>
 
-
-<div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Aufträge</h3>
-  <div class="card-body">
-    <div id="table" class="table-editable">
-      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
-            aria-hidden="true"></i></a></span>
-      <table class="table table-bordered table-responsive-md table-striped text-center">
-        <tr>
-          {% for field in form2 %}
-          <th class="text-center">{{ field.label_tag }}</th>
-          {% endfor %}
-        </tr>
-        <tr>
-          {% for field in form2 %}
-          <td class="pt-3-half" contenteditable="true">{{ field }}</td>
-          {% endfor %}
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
 
 
 {% endblock %}
