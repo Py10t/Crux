@@ -80,9 +80,9 @@ header, footer, article {
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="{% url 'auftrag_index' %}">Aufträge</a>
-  <a href="#">Produktionsaufträge</a>
-  <a href="#">Lieferscheine</a>
-  <a href="#">Rechnungen</a>
+  <a href="{% url 'produktionsauftrag_index' %}">Produktionsaufträge</a>
+  <a href="{% url 'lieferschein_index' %}">Lieferscheine</a>
+  <a href="{% url 'rechnung_index' %}">Rechnungen</a>
 </div>
 
 <script>

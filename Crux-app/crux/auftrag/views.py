@@ -2,24 +2,26 @@ from django.shortcuts import render
 from django_tables2 import RequestConfig
 from bestellung.models import Order
 from .tables import OrderTable
+from django.shortcuts import redirect
 
+# Create your views here.
 
-# gets table data and displays it
 def index(request):
+    """index view is a table showing all orders"""
+    table_single = OrderTable(Order.objects.filter(order_status="Auftrag", collection=False))
+    table_collection = OrderTable(Order.objects.filter(order_status="Auftrag", collection=True))
+    RequestConfig(request).configure(table_single)
+    context = {
+        'table_single': table_single,
+        'table_collection': table_collection,
+    }
+    return render(request, 'auftrag/index.html', context)
 
-    table = OrderTable(Order.objects.filter(order_status="Auftrag"))
-    RequestConfig(request).configure(table)
-    return render(request, 'auftrag/index.html', {'table': table})
-
-# gets record_id from the table to update corresponding object/obj.order_status and take it to the next lvl
-# afterwards page refresh
 def update_order(request, record_id):
-
+    """update orders order_status überführt von einer Stufe zur nächsten"""
     obj = Order.objects.get(pk=record_id)
-    obj.order_status = 'Bestellung'
+    obj.order_status = 'Produktionsauftrag'
     obj.save()
     print('item updated: ' + str(record_id))
-    print(str(record_id))
-    table = OrderTable(Order.objects.filter(order_status="Auftrag"))
-    RequestConfig(request).configure(table)
-    return render(request, 'auftrag/index.html', {'table': table})
+    response = redirect('/auftrag/')
+    return response
