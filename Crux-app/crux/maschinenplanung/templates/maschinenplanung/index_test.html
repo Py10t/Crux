@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'maschinenplanung/style.css' %}">
+<html>
+<head>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/homepage/">Crux</a>
+        </div>
+
+    </div>
+</nav>
+
+<h2>Maschinenplanung</h2>
+
+<table style="width:100%">
+    <tr>
+        <th style="width:2%">Maschine</th>
+        <th style="width:14%">Montag</th>
+        <th style="width:14%">Dienstag</th>
+        <th style="width:14%">Mittwoch</th>
+        <th style="width:14%">Donnerstag</th>
+        <th style="width:14%">Freitag</th>
+        <th style="width:14%">Samstag</th>
+        <th style="width:14%">Sonntag</th>
+    </tr>
+    {% for i in machines %}
+    <tr>
+        <td>{{i}}</td>
+        <td colspan="7">
+            <svg width="100%" height="100%">
+            <rect height="100%" width="100%" y="0" x="0" fill="#dcdcdc" />
+                {% for item in ordered_list %}
+            <rect height="100%" width=" {{ item.runtime }}% " y="0" x= "{{ item.starting_time }}%" fill="orange"
+            style="stroke-width:3;stroke:rgb(0,0,0)"/>
+            <text y="50%" x="{{ item.starting_time }}%" fill="#ffffff">{{ item.name }}</text>
+                {% endfor %}
+            </svg>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<!--<div>
+    <svg viewBox="0 0 583 588" width="100%" height="100%">
+    <rect height="588" width="583" y="0" x="0" fill="#dcdcdc" />
+    <rect height="158.7" width="368.6" y="12.08" x="11.8" fill="#e5b2b2" />
+    <rect height="158.7" width="368.6" y="179.1" x="11.8" fill="#b2e5b2" />
+    <rect height="228.4" width="180" y="349.5" x="11.8" fill="#b2e5e5" />
+    <rect height="228.4" width="180" y="349.5" x="202.2" fill="#b2b2e5" />
+    <rect height="228.4" width="180" y="349.5" x="392.7" fill="#e5b2e5" />
+    <rect height="328.3" width="180.5" y="11.24" x="394.6" fill="#e5e5b2" />
+    <text y="44" x="169" fill="#312583">elem1</text>
+    <text y="44" x="441" fill="#312583">elem2</text>
+    <text y="217" x="163" fill="#312583">elem3</text>
+    <text y="389" x="54" fill="#312583">elem4</text>
+    <text y="389" x="249" fill="#312583">elem5</text>
+    <text y="389" x="442" fill="#312583">elem6</text>
+    </svg>
+</div>
+-->
+</body>
+</html>

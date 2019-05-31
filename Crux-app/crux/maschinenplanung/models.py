@@ -11,10 +11,16 @@ class Maschine(models.Model):
 
 
 class Auftragsobjekt(models.Model):
-    name = models.ForeignKey('stock.Article', on_delete=models.CASCADE)
-    start_date = models.DateField(("Lieferdatum"), default=datetime.date.today)
+    """ week divided into 7 x (60*24) = 10080 units for each minute"""
+    name = models.CharField(("Auftragsobjekt"), max_length=250, default="Something_name")
+    article = models.CharField(("Auftragsobjekt"), max_length=250, default="Something:article")
+    latest_finish = models.DateField(("Lieferdatum"), default=datetime.date.today)
     runtime = models.BigIntegerField(("Laufzeit"), default=1440)
     auftrags_kw = models.BigIntegerField(("Laufzeit"), default=1440)
+    # in case the production already started you want a fixed time and not a calculated
+    prod_started = models.BooleanField(("Already started"), default=False)
+    starting_time = models.BigIntegerField(("Startzeit"), default=1440)
+    fixed_starting_time = models.BigIntegerField(("fStartzeit"), default=1440)
 
     # date_of_start = self.entries[2].get()
     # day, month, year = date_of_start.split('.')
@@ -26,4 +32,5 @@ class Auftragsobjekt(models.Model):
     #
     # schuss = int(self.entries[4].get()) / int(self.entries[5].get())
     # dauer = int(schuss * int(self.entries[6].get()) / 60 / 60 / 6)
-    pass
+    def __str__(self):
+        return self.name + ' | ' + str(self.latest_finish)

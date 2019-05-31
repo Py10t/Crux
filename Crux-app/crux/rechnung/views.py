@@ -18,10 +18,25 @@ def index(request):
     return render(request, 'rechnung/index.html', context)
 
 def update_order(request, record_id):
-    """update orders order_status überführt von einer Stufe zur nächsten"""
+    """update_order pushes via order_status from order up to invoice"""
     obj = Order.objects.get(pk=record_id)
     obj.order_status = 'Done'
     obj.save()
     print('item updated: ' + str(record_id))
     response = redirect('/rechnung/')
     return response
+
+def generate_invoice(request, record_id):
+    """generates invoice via pk """
+    rechnung = Order.objects.get(pk=record_id)
+    customer = rechnung.customer
+    #customer is a foreignkey
+    preis = rechnung.article.price_per_piece*rechnung.amount
+    print(rechnung.article.price_per_piece)
+    # print(customer.city)
+    context = {
+        'rechnung': rechnung,
+        'customer': customer,
+        'preis': preis,
+    }
+    return render(request, 'textdocs/invoice.html', context)

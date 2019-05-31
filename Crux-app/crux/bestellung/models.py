@@ -1,16 +1,17 @@
 from django.db import models
 import datetime
 from django.urls import reverse
-from stock.models import Nummernkreise
+from stock.models import Nummernkreise, Customer, Article
 
 # Create your models here.
+DEFAULT_CUSTOMER_ID = 1
 class Order(models.Model):
     collection = models.BooleanField(("Sammelbestellung"), default=False)
     collection_name = models.CharField(("Bestellungsname"), max_length=250, default="Single")
     order_number_int = models.BigIntegerField(("Bestellnummer intern"), default=0)
     order_number_ext = models.BigIntegerField(("Bestellnummer extern"), default=0)
     article = models.ForeignKey('stock.Article', on_delete=models.CASCADE)
-    company = models.CharField(("Kunde"), max_length=250)
+    customer = models.ForeignKey('stock.Customer', on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID)
     amount = models.BigIntegerField(("Menge"), default=0)
     order_date = models.DateField(("Bestelldatum"), default=datetime.date.today)
     delivery_date = models.DateField(("Lieferdatum"), default=datetime.date.today)
@@ -20,7 +21,7 @@ class Order(models.Model):
         return reverse('bestellung_index')
 
     def __str__(self):
-        return self.article.name + ' | ' + str(self.amount) + ' | ' + str(self.company)
+        return self.article.name + ' | ' + str(self.order_status) + ' | ' + str(self.customer)
 
 
 # class CollectiveOrder(models.Model):
@@ -36,4 +37,4 @@ class Order(models.Model):
 #         return reverse('bestellung_index')
 #
 #     def __str__(self):
-#         return self.article.name + ' | ' + str(self.amount) + ' | ' + str(self.company)
+#         return self.article.name + ' | ' + str(self.amount) + ' | ' + str(self.customer)

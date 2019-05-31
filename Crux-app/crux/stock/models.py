@@ -42,9 +42,10 @@ class MouldingMachine(models.Model):
 
 class Customer(models.Model):
     """Kundendaten"""
-    name = models.CharField(("Kunde"), max_length=50)
-    address = models.CharField(("Adresse"), max_length=50)
-    phone = models.CharField(("Telefon"), max_length=50)
+    name = models.CharField(("Kunde"), max_length=50, default="noname")
+    city = models.CharField(("Stadt"), max_length=50, default="nocity")
+    street = models.CharField(("Straße"), max_length=50, default="nostreet")
+    phone = models.CharField(("Telefon"), max_length=50, default="nophone")
     email = models.EmailField
 
     def __str__(self):
