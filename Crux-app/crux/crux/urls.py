@@ -31,8 +31,4 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('stock/', include('stock.urls')),
     path('admin/', admin.site.urls),
-    # url(r'^login/$', login, {'template_name': 'toggle_login.html'},
-    #     name='mysite_login'),
-    # url(r'^logout/$', 'django.contrib.auth.views.logout',
-    #     {'next_page': reverse_lazy('marcador_bookmark_list')}, name='mysite_logout'),
 ]
