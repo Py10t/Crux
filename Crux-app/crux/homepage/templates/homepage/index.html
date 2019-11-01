@@ -6,8 +6,8 @@
 
 {% block body %}
 
-<h2>Hauptmenü</h2>
-
+<h2>Willkommen</h2>
+<!--
 <svg height="130" width="500">
   <defs>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -61,5 +61,17 @@
   </text>
   Sorry, your browser does not support inline SVG.
 </svg>
-
+-->
+<div style="margin: 0 5%;">
+  <center><h1 style="center">Lager</h1></center>
+  <a href="/stock/" type="button" class="btn btn-primary btn-lg btn-block">Lager</a>
+  <center><h1 style="center">Abläufe</h1></center>
+  <a href="/bestellung/" type="button" class="btn btn-primary btn-lg btn-block">Bestellung</a>
+  <a href="/auftrag/" type="button" class="btn btn-primary btn-lg btn-block">Auftrag</a>
+  <a href="/produktionsauftrag/" type="button" class="btn btn-primary btn-lg btn-block">Produktion</a>
+  <a href="/lieferschein/" type="button" class="btn btn-primary btn-lg btn-block">Lieferschein</a>
+  <a href="/rechnung/" type="button" class="btn btn-primary btn-lg btn-block">Rechnung</a>
+  <center><h1 style="center">Maschinenplanung</h1></center>
+  <a href="/maschinenplanung/" type="button" class="btn btn-primary btn-lg btn-block">MP Ansicht</a>
+</div>
 {% endblock %}

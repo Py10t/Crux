@@ -1,0 +1,73 @@
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+    <div class="form-group">
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ form.order_number_ext.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2">{{ form.order_number_ext.label_tag }}</label>
+        <div class="col-sm-10">{{ form.order_number_ext }}</div>
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ form.collection_name.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2">{{ form.collection_name.label_tag }}</label>
+        <div class="col-sm-10">{{ form.collection_name }}</div>
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ form.company.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2">{{ form.company.label_tag }}</label>
+        <div class="col-sm-10">{{ form.company }}</div>
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ form.order_date.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2">{{ form.order_date.label_tag }}</label>
+        <div class="col-sm-10">{{ form.order_date }}</div>
+
+    </div>
+
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Aufträge</h3>
+      <div class="card-body">
+        <div id="table" form="form-horizontal">
+          <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
+                aria-hidden="true"></i></a></span>
+          <table id="myTable" class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+            <tr>
+                <th class="text-center">{{ form.article.label_tag }}</th>
+                <th class="text-center">{{ form.amount.label_tag }}</th>
+                <th class="text-center">{{ form.delivery_date.label_tag }}</th>
+            </tr>
+            <tr>
+                <td id="artikel" class="pt-3-half">{{ form.article }}</td>
+                <td class="pt-3-half">{{ form.amount }}</td>
+                <td class="pt-3-half">{{ form.delivery_date }}</td>
+            </tr>
+            <tr>
+                <td class="pt-3-half">{{ form.article }}</td>
+                <td class="pt-3-half">{{ form.amount }}</td>
+                <td class="pt-3-half">{{ form.delivery_date }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+      <button type="button" onclick="myFunction()">Neue Zeile</button>
+  </div>
+  </div>
+    <script>
+function myFunction() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0).getElementById('artikel');
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML = "NEW CELL1";
+}
+    </script>
