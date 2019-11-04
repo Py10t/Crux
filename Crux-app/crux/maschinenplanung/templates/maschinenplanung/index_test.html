@@ -32,14 +32,17 @@
     </tr>
     {% for i in machines %}
     <tr>
-        <td>{{i}}</td>
+        <td><b>{{i}}</b></td>
         <td colspan="7">
             <svg width="100%" height="100%">
-            <rect height="100%" width="100%" y="0" x="0" fill="#dcdcdc" />
+            <rect height="100%" width="100%" y="0" x="0" rx="10" ry="10" fill="#dcdcdc"/>
                 {% for item in ordered_list %}
-            <rect height="100%" width=" {{ item.runtime }}% " y="0" x= "{{ item.starting_time }}%" fill="orange"
-            style="stroke-width:3;stroke:rgb(0,0,0)"/>
-            <text y="50%" x="{{ item.starting_time }}%" fill="#ffffff">{{ item.name }}</text>
+            <rect height="100%" width=" {{ item.runtime }}% " y="0" x= "{{ item.starting_time }}%" fill="cyan"
+            style="stroke-width: 3; stroke: rgb(0,0,0); anchor: left"/>
+            <text y="50%" x="{{ item.starting_time }}%" fill="grey" style="font: bold 16px sans-serif;
+                              text-anchor: middle; writing-mode: vertical-rl; text-orientation: sideways;">
+                <tspan style="baseline-shift:10;">{{ item.name }}</tspan>
+            </text>
                 {% endfor %}
             </svg>
         </td>

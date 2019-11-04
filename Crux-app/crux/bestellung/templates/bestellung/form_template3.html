@@ -18,10 +18,10 @@
         <div class="col-sm-10">{{ form.collection_name }}</div>
 
         <div class="col-sm-offset-2 col-sm-10">
-            <span class="text-danger small">{{ form.company.errors }}</span>
+            <span class="text-danger small">{{ form.customer.errors }}</span>
         </div>
-        <label class="control-label col-sm-2">{{ form.company.label_tag }}</label>
-        <div class="col-sm-10">{{ form.company }}</div>
+        <label class="control-label col-sm-2">{{ form.customer.label_tag }}</label>
+        <div class="col-sm-10">{{ form.customer }}</div>
 
         <div class="col-sm-offset-2 col-sm-10">
             <span class="text-danger small">{{ form.order_date.errors }}</span>
@@ -46,14 +46,9 @@
                 <th class="text-center">{{ form.delivery_date.label_tag }}</th>
             </tr>
             <tr>
-                <td id="artikel" class="pt-3-half">{{ form.article }}</td>
-                <td class="pt-3-half">{{ form.amount }}</td>
-                <td class="pt-3-half">{{ form.delivery_date }}</td>
-            </tr>
-            <tr>
-                <td class="pt-3-half">{{ form.article }}</td>
-                <td class="pt-3-half">{{ form.amount }}</td>
-                <td class="pt-3-half">{{ form.delivery_date }}</td>
+                <td id="Artikel" class="pt-3-half">{{ form.article }}</td>
+                <td id="Menge" class="pt-3-half">{{ form.amount }}</td>
+                <td id="Datum" class="pt-3-half">{{ form.delivery_date }}</td>
             </tr>
           </table>
         </div>
@@ -62,12 +57,18 @@
       <button type="button" onclick="myFunction()">Neue Zeile</button>
   </div>
   </div>
-    <script>
+    <script type="text/javascript">
 function myFunction() {
   var table = document.getElementById("myTable");
   var row = table.insertRow(-1);
-  var cell1 = row.insertCell(0).getElementById('artikel');
+  var cell1html = document.getElementById("Artikel").innerHTML;
+  var cell2html = document.getElementById("Menge").innerHTML;
+  var cell3html = document.getElementById("Datum").innerHTML;
+  var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
-  cell1.innerHTML = "NEW CELL1";
+  var cell3 = row.insertCell(2);
+  cell1.innerHTML = cell1html;
+  cell2.innerHTML = cell2html;
+  cell3.innerHTML = cell3html;
 }
     </script>
