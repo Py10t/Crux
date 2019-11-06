@@ -2,8 +2,6 @@
 {% load staticfiles %}
 
 
-
-
 {% block body %}
 <!--
 <svg height="130" width="500">
@@ -60,12 +58,14 @@
   Sorry, your browser does not support inline SVG.
 </svg>
 -->
-<h2>Willkommen</h2>
+
+<h2 align="center"><u>{{ aktuelle_kw_string }}</u></h2>
 
 <div style="margin: 0 35%;">
   <center><h1 style="center">Lager</h1></center>
   <a href="/stock/" type="button" class="btn btn-primary btn-lg btn-block">Lager</a>
   <center><h1 style="center">Abläufe</h1></center>
+  <a href="/aktuelles/" type="button" class="btn btn-primary btn-lg btn-block">Aktuelles</a>
   <a href="/bestellung/" type="button" class="btn btn-primary btn-lg btn-block">Bestellung</a>
   <a href="/auftrag/" type="button" class="btn btn-primary btn-lg btn-block">Auftrag</a>
   <a href="/produktionsauftrag/" type="button" class="btn btn-primary btn-lg btn-block">Produktion</a>

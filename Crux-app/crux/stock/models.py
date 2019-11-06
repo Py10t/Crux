@@ -21,12 +21,21 @@ class Article(models.Model):
     name = models.CharField(("Artikel"), max_length=50)
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     weight = models.DecimalField(("Gewicht"), max_digits=8, decimal_places=3)
-    stock_amount = models.BigIntegerField(("Lagerbestand"), default=0)
+    # stock_amount = models.BigIntegerField(("Lagerbestand"), default=0)
     price_per_piece = models.DecimalField(("Preis in €"), max_digits=8, decimal_places=2)
     cavities = models.BigIntegerField("Kavitäten", default=1)
 
     def __str__(self):
         return self.name + ' | ' + str(self.material)
+
+
+class Stock(models.Model):
+    """Lagerbestand"""
+    article = models.OneToOneField('stock.Article', on_delete=models.CASCADE)
+    stock_amount = stock_amount = models.BigIntegerField(("Lagerbestand"), default=0)
+
+    def __str__(self):
+        return str(self.stock_amount)
 
 
 class MouldingMachine(models.Model):

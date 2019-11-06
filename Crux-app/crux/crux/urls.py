@@ -30,5 +30,6 @@ urlpatterns = [
     path('rechnung/', include('rechnung.urls')),
     path('polls/', include('polls.urls')),
     path('stock/', include('stock.urls')),
+    path('aktuelles/', include('aktuelles.urls')),
     path('admin/', admin.site.urls),
 ]
