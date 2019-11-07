@@ -11,10 +11,5 @@ class AktuellesTable(tables.Table):
         template_name = 'django_tables2/bootstrap.html'
         # sequence = ('article', 'delivery_date', 'amount', 'order_status', 'customer')
         # exclude = ['order_date', 'id', 'collection', 'collection_name', 'order_number_ext', 'order_number_int']
-        fields = ['article', 'delivery_date', 'amount', 'order_status', 'customer']
-
-
-    my_column = tables.TemplateColumn(verbose_name=('Lager'),
-                                      template_name='aktuelles/stock_amount.html')
-
+        fields = ['article', 'delivery_date', 'amount', 'order_status', 'customer', 'stock_amount']
 

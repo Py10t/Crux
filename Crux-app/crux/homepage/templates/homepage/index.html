@@ -1,4 +1,4 @@
-{% extends 'homepage/base.html' %}
+{% extends 'homepage/base2.html' %}
 {% load staticfiles %}
 
 
@@ -59,20 +59,25 @@
 </svg>
 -->
 
-<h2 align="center"><u>{{ aktuelle_kw_string }}</u></h2>
+<h2 align="right"><span class="badge badge-dark">{{ aktuelle_kw_string }}</span></h2>
 
 <div style="margin: 0 35%;">
-  <center><h1 style="center">Lager</h1></center>
+  <center><h1><span class="badge badge-secondary">Lager</span></h1></center>
   <a href="/stock/" type="button" class="btn btn-primary btn-lg btn-block">Lager</a>
-  <center><h1 style="center">Abläufe</h1></center>
-  <a href="/aktuelles/" type="button" class="btn btn-primary btn-lg btn-block">Aktuelles</a>
+  <br>
+  <center><h1><span class="badge badge-secondary">Abläufe</span></h1></center>
+  <a href="/aktuelles/" type="button" class="btn btn-light btn-lg btn-block">Aktuelles</a>
   <a href="/bestellung/" type="button" class="btn btn-primary btn-lg btn-block">Bestellung</a>
   <a href="/auftrag/" type="button" class="btn btn-primary btn-lg btn-block">Auftrag</a>
   <a href="/produktionsauftrag/" type="button" class="btn btn-primary btn-lg btn-block">Produktion</a>
   <a href="/lieferschein/" type="button" class="btn btn-primary btn-lg btn-block">Lieferschein</a>
   <a href="/rechnung/" type="button" class="btn btn-primary btn-lg btn-block">Rechnung</a>
-  <center><h1 style="center">Maschinenplanung</h1></center>
+  <br>
+  <center><h1><span class="badge badge-secondary">Maschinenplanung</span></h1></center>
   <a href="/maschinenplanung/" type="button" class="btn btn-primary btn-lg btn-block">MP Ansicht</a>
+  <br>
+  <center><h1><span class="badge badge-secondary">Auswertungen</span></h1></center>
+  <a href="/maschinenplanung/" type="button" class="btn btn-primary btn-lg btn-block">Rechnungen</a>
 </div>
 
 {% endblock %}

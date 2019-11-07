@@ -10,12 +10,13 @@ class Order(models.Model):
     collection_name = models.CharField(("Bestellungsname"), max_length=250, default="Single")
     order_number_int = models.BigIntegerField(("Bestellnummer intern"), default=0)
     order_number_ext = models.BigIntegerField(("Bestellnummer extern"), default=0)
-    article = models.ForeignKey('stock.Article', on_delete=models.CASCADE)
-    customer = models.ForeignKey('stock.Customer', on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID)
+    article = models.ForeignKey('stock.Article', on_delete=models.CASCADE, verbose_name='Artikel')
+    customer = models.ForeignKey('stock.Customer', on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID, verbose_name='Kunde')
     amount = models.BigIntegerField(("Menge"), default=0)
     order_date = models.DateField(("Bestelldatum"), default=datetime.date.today)
     delivery_date = models.DateField(("Lieferdatum"), default=datetime.date.today)
-    order_status = models.CharField(max_length=250, default="Bestellung")
+    order_status = models.CharField(("Status"),max_length=250, default="Bestellung")
+    stock_amount = models.BigIntegerField(("Lagermenge"), default=0)
 
     def get_absolute_url(self):
         return reverse('bestellung_index')
