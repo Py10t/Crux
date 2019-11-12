@@ -77,6 +77,15 @@
             </h2>
           </div>
         </div>
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" onclick="load_home()">
+                <b>NEW CONTENT</b>
+              </button>
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -89,7 +98,7 @@
             <a href="/stock/" type="button" class="btn btn-light btn-lg btn-block">Lager</a>
           </div>
         </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
           <a href="/aktuelles/" type="button" class="btn btn-secondary btn-lg btn-block">Aktuelles</a>
           <a href="/bestellung/" type="button" class="btn btn-light btn-lg btn-block">Bestellung</a>
@@ -99,18 +108,27 @@
           <a href="/rechnung/" type="button" class="btn btn-light btn-lg btn-block">Rechnung</a>
         </div>
       </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <div class="card-body">
           <a href="/maschinenplanung/" type="button" class="btn btn-light btn-lg btn-block">MP Ansicht</a>
         </div>
       </div>
-      <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <div class="card-body">
           <a href="/maschinenplanung/" type="button" class="btn btn-light btn-lg btn-block">Rechnungen</a>
         </div>
       </div>
+      </div>
     </div>
-</div>
 
+    <div class="col-sm" id="content">
+    </div>
+  </div>
+</div>
+<script>
+  function load_home() {
+     document.getElementById("content").innerHTML="{% url 'index' %}";
+}
+</script>
 
 {% endblock %}
