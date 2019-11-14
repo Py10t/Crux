@@ -29,7 +29,7 @@ urlpatterns = [
     path('lieferschein/', include('lieferschein.urls')),
     path('rechnung/', include('rechnung.urls')),
     path('polls/', include('polls.urls')),
-    path('stock/', include('stock.urls')),
     path('aktuelles/', include('aktuelles.urls')),
+    path('stock/', include('stock.urls', namespace='stock')),
     path('admin/', admin.site.urls),
 ]
