@@ -1,8 +1,14 @@
-body {
+html,body {
     background: white url("images/background.png");
     text-decoration: none;
+    height: 100%;
 }
 
 a:hover {
   text-decoration: none;
+}
+
+#full-page {
+  height: 100%;
+  background: yellow;
 }
