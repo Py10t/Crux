@@ -2,9 +2,9 @@
 
 {% load render_table from django_tables2 %}
 
-
 {% block style %}
 
+{% comment %}
 <style>
 
 * {
@@ -43,6 +43,7 @@ header, footer, article {
 
 </style>
 
+{% endcomment %}
 {% endblock %}
 
 <body>
@@ -68,10 +69,6 @@ header, footer, article {
         <h3> Kunden</h3>
 
     {% render_table customer %}
-
-        <h3> Werkzeuge</h3>
-
-    {% render_table tooling %}
 
   </div>
 </main>

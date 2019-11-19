@@ -1,134 +1,11 @@
-{% extends 'homepage/base2.html' %}
+{% extends 'homepage/base.html' %}
+
 {% load staticfiles %}
 
 {% block body %}
-{% comment %}
- <!--
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <center><h1><span class="badge badge-primary">Lager</span></h1></center>
-      <a href="/stock/" type="button" class="btn btn-dark btn-lg btn-block">Lager</a>
-      <br>
-    </div>
 
-    <div class="col-sm">
-      <center><h1><span class="badge badge-primary">Abläufe</span></h1></center>
-      <a href="/aktuelles/" type="button" class="btn btn-light btn-lg btn-block">Aktuelles</a>
-      <a href="/bestellung/" type="button" class="btn btn-dark btn-lg btn-block">Bestellung</a>
-      <a href="/auftrag/" type="button" class="btn btn-dark btn-lg btn-block">Auftrag</a>
-      <a href="/produktionsauftrag/" type="button" class="btn btn-dark btn-lg btn-block">Produktion</a>
-      <a href="/lieferschein/" type="button" class="btn btn-dark btn-lg btn-block">Lieferschein</a>
-      <a href="/rechnung/" type="button" class="btn btn-dark btn-lg btn-block">Rechnung</a>
-      <br>
-    </div>
-
-    <div class="col-sm">
-      <center><h1><span class="badge badge-primary">Maschinenplanung</span></h1></center>
-      <a href="/maschinenplanung/" type="button" class="btn btn-dark btn-lg btn-block">MP Ansicht</a>
-      <br>
-    </div>
-    <div class="col-sm">
-      <center><h1><span class="badge badge-primary">Auswertungen</span></h1></center>
-      <a href="/maschinenplanung/" type="button" class="btn btn-dark btn-lg btn-block">Rechnungen</a>
-      <br>
-    </div>
-  </div>
- *****************************************************************************-->
-<!--<div class="container" style="margin: 0 10%">-->
-<!--  <div class="row">-->
-<!--    <div class="col-sm">-->
-<!--      <div class="accordion" id="accordionExample">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="headingOne">-->
-<!--            <h2 class="mb-0">-->
-<!--              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">-->
-<!--                <b>Lager</b>-->
-<!--              </button>-->
-<!--            </h2>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="headingTwo">-->
-<!--            <h2 class="mb-0">-->
-<!--              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
-<!--                <b>Abläufe</b>-->
-<!--              </button>-->
-<!--            </h2>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="headingThree">-->
-<!--            <h2 class="mb-0">-->
-<!--              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
-<!--                <b>Maschinenplanung</b>-->
-<!--              </button>-->
-<!--            </h2>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="headingFour">-->
-<!--            <h2 class="mb-0">-->
-<!--              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">-->
-<!--                <b>Auswertungen</b>-->
-<!--              </button>-->
-<!--            </h2>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--          <div class="card-header" id="headingFive">-->
-<!--            <h2 class="mb-0">-->
-<!--              <button class="btn btn-link collapsed" type="button" onclick="load_home()">-->
-<!--                <b>NEW CONTENT</b>-->
-<!--              </button>-->
-<!--            </h2>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash;  right card  &ndash;&gt;-->
-
-<!--    <div class="col-sm">-->
-<!--      <div class="card">-->
-<!--        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">-->
-<!--          <div class="card-body">-->
-<!--            <a href="/stock/" type="button" class="btn btn-light btn-lg btn-block">Lager</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">-->
-<!--        <div class="card-body">-->
-<!--          <a href="/aktuelles/" type="button" class="btn btn-secondary btn-lg btn-block">Aktuelles</a>-->
-<!--          <a href="/bestellung/" type="button" class="btn btn-light btn-lg btn-block">Bestellung</a>-->
-<!--          <a href="/auftrag/" type="button" class="btn btn-light btn-lg btn-block">Auftrag</a>-->
-<!--          <a href="/produktionsauftrag/" type="button" class="btn btn-light btn-lg btn-block">Produktion</a>-->
-<!--          <a href="/lieferschein/" type="button" class="btn btn-light btn-lg btn-block">Lieferschein</a>-->
-<!--          <a href="/rechnung/" type="button" class="btn btn-light btn-lg btn-block">Rechnung</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">-->
-<!--        <div class="card-body">-->
-<!--          <a href="/maschinenplanung/" type="button" class="btn btn-light btn-lg btn-block">MP Ansicht</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--        <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">-->
-<!--        <div class="card-body">-->
-<!--          <a href="/maschinenplanung/" type="button" class="btn btn-light btn-lg btn-block">Rechnungen</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="col-sm">-->
-<!--      <div class="card" id="content">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-{% endcomment %}
-
-<div class="container-fluid" id="full-page" style="height: 100%">
-  <div class="row">
+<div class="container-fluid" style="height: 100%">
+  <div class="row" style="height: 100%">
     <div class="col-2 h-100">
       <div class="accordion" id="accordionExample">
         <div class="card">
@@ -157,11 +34,12 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
           <a href="/aktuelles/" type="button" class="btn btn-secondary btn-lg btn-block">Aktuelles</a>
-          <a href="/bestellung/" type="button" class="btn btn-light btn-lg btn-block">Bestellung</a>
-          <a href="/auftrag/" type="button" class="btn btn-light btn-lg btn-block">Auftrag</a>
-          <a href="/produktionsauftrag/" type="button" class="btn btn-light btn-lg btn-block">Produktion</a>
-          <a href="/lieferschein/" type="button" class="btn btn-light btn-lg btn-block">Lieferschein</a>
-          <a href="/rechnung/" type="button" class="btn btn-light btn-lg btn-block">Rechnung</a>
+          <a type="button" class="btn btn-light btn-lg btn-block" data-target="content" onclick="load_frame({% url 'bestellung:bestellung_index' %})">Bestellung</a>
+          <a type="button" class="btn btn-light btn-lg btn-block" data-target="content" onclick="load_frame({% url 'auftrag:auftrag_index' %})">Auftrag</a>
+          <a type="button" class="btn btn-light btn-lg btn-block" data-target="content" onclick="load_frame({% url 'produktionsauftrag:produktionsauftrag_index' %})">Produktion</a>
+          <a type="button" class="btn btn-light btn-lg btn-block" data-target="content" onclick="load_frame({% url 'lieferschein:lieferschein_index' %})">Lieferschein</a>
+          <a type="button" class="btn btn-light btn-lg btn-block" data-target="content" onclick="load_frame({% url 'rechnung:rechnung_index' %})">Rechnung</a>
+
         </div>
       </div>
         </div>
@@ -196,7 +74,7 @@
         <div class="card">
           <div class="card-header" id="headingFive">
             <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-target="content" onclick="load_home()">
+              <button class="btn btn-link collapsed" type="button" data-target="content" onclick="load_frame({% url 'stock:stock_index' %})">
                 <b>NEW CONTENT</b>
               </button>
             </h2>
@@ -205,7 +83,7 @@
       </div>
     </div>
     <div class="col-lg-9">
-      <iframe id="content" width=100% height=100% src="{% url 'stock:stock_index' %}">
+      <iframe id="content">
         Your browser doesn't support iFrames.
       </iframe>
     </div>
@@ -214,13 +92,5 @@
     </div>
   </div>
 </div>
-
-{% comment %}
-<script>
-  function load_home() {
-     document.getElementById("content").innerHTML="<iframe id="encoder_iframe" src="{% url 'stock:stock_index' %}"></iframe>";
-}
-</script>
-{% endcomment %}
 
 {% endblock %}
