@@ -20,7 +20,7 @@ from django.conf.urls import url,include
 
 urlpatterns = [
     path('', include('homepage.urls')),
-    path('homepage/', include('homepage.urls')),
+    path('homepage/', include('homepage.urls', namespace='homepage')),
     path('textdocs/', include('textdocs.urls')),
     path('maschinenplanung/', include('maschinenplanung.urls')),
     path('bestellung/', include('bestellung.urls', namespace='bestellung')),

@@ -43,14 +43,14 @@ def mp(request):
         verpackungszeit = int(produktionsdauer/10) # in Sekunden / 10 random Wert
         # print("verpackungszeit :" + str(verpackungszeit))
         summe = (produktionsdauer+30) / 60 # +30 für ein-/ausbauen | Zeit in Minuten
-        print("summe :" + str(summe))
+        # print("summe :" + str(summe))
 
         # übergabe an die DB
         planung_obj.name = artikelname # brauche ich was neues
         planung_obj.article = artikelname
         planung_obj.latest_finish = lieferdatum
         planung_obj.runtime = int(summe / 10080 * 100)
-        print("runtime :" + str(planung_obj.runtime))
+        # print("runtime :" + str(planung_obj.runtime))
         # saving object
         planung_obj.save()
 
@@ -66,9 +66,9 @@ def mp(request):
     day = (int(x.strftime("%w"))-1) * 24 * 60 # -1 cause "0" = sunday; O_o who does that
     hour = int(x.strftime("%H")) * 60
     minute = int(x.strftime("%M"))
-    print(day + hour + minute)
-    print(sorted_mp_objects[0].name)
-    print(sorted_mp_objects[0].runtime)
+    # print(day + hour + minute)
+    # print(sorted_mp_objects[0].name)
+    # print(sorted_mp_objects[0].runtime)
     starting_time = int((day + hour + minute + 30) / 10080 * 100) # to get % numbers
 
     # creating starting time
@@ -76,7 +76,7 @@ def mp(request):
         item.starting_time = starting_time
         starting_time = starting_time + item.runtime
         # item.save()
-        print("starting time: " + str(item.starting_time))
+        print(str(item.name) + "/starting time: " + str(item.starting_time) + "/runtime: " + str(item.runtime))
 
     context = {
         'machines': [1, 2, 3, 4, 5], # len(all_machines) instead of hardcoded
