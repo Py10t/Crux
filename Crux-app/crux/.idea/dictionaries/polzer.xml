@@ -7,13 +7,18 @@
       <w>auftrag</w>
       <w>auswertungen</w>
       <w>bestellung</w>
+      <w>colspan</w>
+      <w>endcomment</w>
+      <w>endfor</w>
       <w>lieferschein</w>
+      <w>maschine</w>
       <w>maschinenplanung</w>
       <w>produktion</w>
       <w>produktionsauftrag</w>
       <w>rechnung</w>
       <w>rechnungen</w>
       <w>textdocs</w>
+      <w>wochenende</w>
     </words>
   </dictionary>
 </component>

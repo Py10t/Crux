@@ -59,14 +59,14 @@ def mp(request):
     # sorted by ascending latest finish
     unsorted_mp_objects = mp_objects.all()
     sorted_mp_objects = sorted(unsorted_mp_objects, key=lambda t: t.latest_finish)
-    # print(sorted_mp_objects)
+    print(sorted_mp_objects)
 
     # get current time and convert to number representing a starting time
     x = datetime.datetime.now()
     day = (int(x.strftime("%w"))-1) * 24 * 60 # -1 cause "0" = sunday; O_o who does that
     hour = int(x.strftime("%H")) * 60
     minute = int(x.strftime("%M"))
-    # print(day + hour + minute)
+    print("day: " + str(day) + "/hour: " + str(hour) + "/minute: " + str(minute))
     # print(sorted_mp_objects[0].name)
     # print(sorted_mp_objects[0].runtime)
     starting_time = int((day + hour + minute + 30) / 10080 * 100) # to get % numbers
@@ -79,6 +79,7 @@ def mp(request):
         print(str(item.name) + "/starting time: " + str(item.starting_time) + "/runtime: " + str(item.runtime))
 
     context = {
+        'weekdays': ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
         'machines': [1, 2, 3, 4, 5], # len(all_machines) instead of hardcoded
         'ordered_list': sorted_mp_objects,
         'time': 15,

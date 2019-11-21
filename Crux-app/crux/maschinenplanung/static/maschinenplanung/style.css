@@ -23,3 +23,10 @@ table, th, td {
 tr {
 width=1000px;
 }
+
+#grid_container {
+  display: grid;
+  grid-template-rows:200px 1fr 100px;
+  grid-template-columns:8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33%;
+  grid-auto-flow: row;
+}
