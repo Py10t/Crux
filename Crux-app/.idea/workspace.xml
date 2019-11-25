@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3c1e1-153a-48bb-8d74-42adbb2b4c43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice_test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/andra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/andra.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/bestellung/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/bestellung/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crux/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/crux/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/homepage/templates/homepage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/homepage/templates/homepage/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/templates/maschinenplanung/index_test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crux/maschinenplanung/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/maschinenplanung/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/rechnung/templates/rechnung/next_button.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/rechnung/templates/rechnung/next_button.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/rechnung/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/rechnung/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/rechnung/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/rechnung/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crux/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/crux/textdocs/templates/textdocs/invoice.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,12 +47,6 @@
     <option name="WARN_ABOUT_CRLF" value="false" />
     <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
     <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-229" />
-    <option name="y" value="-27" />
-    <option name="width" value="1936" />
-    <option name="height" value="1015" />
   </component>
   <component name="ProjectId" id="1TNo4SyOdnLidOXPXb1fhPaaox1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
