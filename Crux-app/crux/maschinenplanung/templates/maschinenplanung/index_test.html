@@ -2,11 +2,41 @@
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 <!--<link rel="stylesheet" type="text/css" href="{% static 'maschinenplanung/style.css' %}">-->
-<html>
-<head>
-</head>
-<body>
 
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['timeline']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Maschine');
+      data.addColumn('date', 'Season Start Date');
+      data.addColumn('date', 'Season End Date');
+
+      data.addRows([
+        ['Maschine 1', new Date(2001, 1, 1), new Date(2001, 1, 2)],
+        ['Maschine 2', new Date(2001, 1, 1), new Date(2001, 1, 5)],
+        ['Maschine 3', new Date(2001, 1, 2), new Date(2001, 1, 5)],
+        ['Maschine 4', new Date(2001, 1, 3), new Date(2001, 1, 5)],
+        ['Maschine 5', new Date(2001, 1, 4), new Date(2001, 1, 5)],
+      ]);
+
+      var options = {
+        height: 450,
+        timeline: {
+          groupByRowLabel: true
+        }
+      };
+
+      var chart = new google.visualization.Timeline(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+<body>
   <div class="container">
     <h2>Maschinenplanung</h2>
     <table class="table table-striped table-dark table-bordered">
@@ -19,80 +49,12 @@
         </tr>
       </thead>
       <tbody>
-        {% for i in machines %}
-        {% comment %}
-<!--        <tr>-->
-<!--            <td><b>{{i}}</b></td>-->
-<!--            <td colspan="7">-->
-<!--                <svg width="100%" height="100%">-->
-<!--                <rect height="100%" width="100%" y="0" x="0" fill="#dcdcdc"/>-->
-<!--                    {% for item in ordered_list %}-->
-<!--                <rect height="100%" width=" {{ item.runtime }}% " y="0" x= "{{ item.starting_time }}%" fill=#28a745-->
-<!--                style="stroke-width: 3; stroke: rgb(0,0,0); anchor: left"/>-->
-<!--                <text y="50%" x="{{ item.starting_time }}%" fill="grey" style="font: bold 16px sans-serif;-->
-<!--                                  text-anchor: middle; writing-mode: vertical-rl; text-orientation: sideways;">-->
-<!--                    <tspan style="baseline-shift:10;">{{ item.name }}</tspan>-->
-<!--                </text>-->
-<!--                    {% endfor %}-->
-<!--                </svg>-->
-<!--            </td>-->
-<!--        </tr>-->
-        {% endcomment %}
         <tr>
-          <td><b>{{i}}</b></td>
-          <td> <!--colspan="5" ohne Wochenende-->
-            <div class="container">A
-
-            </div>
-          </td>
-          <td>
-            <div class="container" id="grid_container">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
-              <div>4</div>
-              <div>5</div>
-              <div>6</div>
-              <div>7</div>
-              <div>8</div>
-              <div>9</div>
-              <div>10</div>
-              <div>11</div>
-              <div>12</div>
-            </div>
-          </td>
-          <td>
-            <div class="grid_container">
-              C
-            </div>
-          </td>
-          <td>
-            <div class="grid_container">
-              D
-            </div>
-          </td>
-          <td>
-            <div class="grid_container">
-              E
-            </div>
-          </td><!--              <div class="progress colspan-3" style="height: 40px;">-->
-  <!--              <div class="container">-->
-  <!--                <div class="row">-->
-  <!--                  <div class="col-12 col-md-8">.col-12 .col-md-8</div>-->
-  <!--                  <div class="col-6 col-md-4">.col-6 .col-md-4</div>-->
-  <!--                </div>-->
-  <!--              </div>-->
-
-  <!--                {% for item in ordered_list %}-->
-
-  <!--                {% endfor %}-->
-<!--              </div>-->
-<!--            </div>-->
+          <td colspan="6" rowspan="5"> <!--colspan="5" ohne Wochenende-->
+              <div id="chart_div"></div>
           </td>
         </tr>
-        {% endfor %}
       </tbody>
     </table>
-</div>
+  </div>
 </body>
-</html>
