@@ -18,14 +18,7 @@
       data.addRows([
       {% for item in da_real_array %}
         ['{{ item.0 }}', new Date('{{ item.1 }}'), new Date('{{ item.2 }}')],
-
       {% endfor %}
-      {% comment %}
-        ['Maschine 2', new Date(2001, 1, 1), new Date(2001, 1, 5)],
-        ['Maschine 3', new Date(2001, 1, 2), new Date(2001, 1, 5)],
-        ['Maschine 4', new Date(2001, 1, 3), new Date(2001, 1, 5)],
-        ['Maschine 5', new Date(2001, 1, 4), new Date(2001, 1, 5)],
-      {% endcomment %}
       ]);
 
       var options = {
@@ -44,23 +37,21 @@
   </head>
 <body>
   <div class="container">
-    <h2>Maschinenplanung</h2>
-    <table class="table table-striped table-dark table-bordered">
-      <thead>
-        <tr>
-          <th style="width:2%">Maschine</th>
-          {% for item in weekdays %}
-          <th style="width:14%">{{ item }}</th>
-          {% endfor %}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="6" rowspan="5"> <!--colspan="5" ohne Wochenende-->
-              <div id="chart_div"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Maschinenplanung</p>
+<!--      <table class="table table-striped table-dark table-bordered">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th style="width:2%">Maschinenplanung</th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <tr>-->
+<!--            <td colspan="6" rowspan="5">-->
+<!--              <div id="chart_div"></div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+    <div id="chart_div"></div>
   </div>
 </body>

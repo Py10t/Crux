@@ -88,11 +88,11 @@ def mp(request):
     latest_finish_new = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
 
     for item in sorted_mp_objects:
+        print("----------------------------------------")
         latest_finish = item.latest_finish
         # print(latest_finish)
         print(starting_time_old)
         if (latest_finish > starting_time_old):
-            print("Bin ich im while ?")
             latest_finish_new = starting_time_old
         else:
             pass
