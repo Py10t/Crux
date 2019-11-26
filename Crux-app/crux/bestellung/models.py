@@ -13,9 +13,10 @@ class Order(models.Model):
     article = models.ForeignKey('stock.Article', on_delete=models.CASCADE, verbose_name='Artikel')
     customer = models.ForeignKey('stock.Customer', on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID, verbose_name='Kunde')
     amount = models.BigIntegerField(("Menge"), default=0)
-    order_date = models.DateField(("Bestelldatum"), default=datetime.date.today)
-    delivery_date = models.DateField(("Lieferdatum"), default=datetime.date.today)
-    order_status = models.CharField(("Status"),max_length=250, default="Bestellung")
+    order_date = models.DateTimeField(("Bestelldatum"), default=datetime.datetime.today)
+    delivery_date = models.DateTimeField(("Lieferdatum"), default=datetime.datetime.today)
+    # production_starting_time = models.TimeField(("Startzeit"), default=datetime.datetime)
+    order_status = models.CharField(("Status"), max_length=250, default="Bestellung")
     stock_amount = models.BigIntegerField(("Lagermenge"), default=0)
 
     def get_absolute_url(self):

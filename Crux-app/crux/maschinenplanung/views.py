@@ -4,6 +4,7 @@ from stock.models import Article
 from bestellung.models import Order
 from maschinenplanung.models import Auftragsobjekt
 import datetime
+from django.utils import timezone
 # Create your views here.
 
 
@@ -29,9 +30,9 @@ def mp(request):
         # print("item :" + str(item))
         planung_obj = Auftragsobjekt()
         artikelname = item.article.name
-        # print("artikelname :" + str(artikelname) + str(type(item.article.name)))
         lieferdatum = item.delivery_date
-        # print("lieferdatum :" + str(lieferdatum))
+        # print(type(item.delivery_date))
+        # print("artikelname :" + str(artikelname) +"lieferdatum :" + str(lieferdatum))
         liefermenge = item.amount
         # print("liefermenge :" + str(liefermenge))
 
@@ -50,7 +51,8 @@ def mp(request):
         planung_obj.name = artikelname  # brauche ich was neues
         planung_obj.article = artikelname
         planung_obj.latest_finish = lieferdatum
-        planung_obj.runtime = int(summe / 10080 * 100)
+        # planung_obj.runtime = int(summe / 10080 * 100)
+        planung_obj.runtime = int(summe+0.5)  # +0.5 fürs aufrunden
         # print("runtime :" + str(planung_obj.runtime))
         # saving object
         planung_obj.save()
@@ -64,32 +66,49 @@ def mp(request):
 
     # get current time and convert to number representing a starting time
     x = datetime.datetime.now()
-    day = (int(x.strftime("%w"))-1) * 24 * 60  # -1 cause "0" = sunday; O_o who does that
-    hour = int(x.strftime("%H")) * 60
-    minute = int(x.strftime("%M"))
-    print("day: " + str(day) + "/hour: " + str(hour) + "/minute: " + str(minute))
+    # day = (int(x.strftime("%w"))-1) * 24 * 60  # -1 cause "0" = sunday; O_o who does that
+    # hour = int(x.strftime("%H")) * 60
+    # minute = int(x.strftime("%M"))
+    # print("day: " + str(day) + "/hour: " + str(hour) + "/minute: " + str(minute))
     # print(sorted_mp_objects[0].name)
     # print(sorted_mp_objects[0].runtime)
-    starting_time = int((day + hour + minute + 30) / 10080 * 100)  # to get % numbers
+    # starting_time = int((day + hour + minute + 30) / 10080 * 100)  # to get % numbers
+    starting_time = x
+    print("starting_time: " + str(starting_time))
 
     # creating starting time
-    for item in sorted_mp_objects:
-        item.starting_time = starting_time
-        starting_time = starting_time + item.runtime
+    # for item in sorted_mp_objects:
+    #     item.starting_time = starting_time
+    #     starting_time = starting_time + item.runtime
         # item.save()
-        print(str(item.name) + "/starting time: " + str(item.starting_time) + "/runtime: " + str(item.runtime))
+        # print(str(item.name) + "/starting time: " + str(item.starting_time) + "/runtime: " + str(item.runtime))
 
     mp_array = []
+    starting_time_old = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
+    latest_finish_new = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
 
     for item in sorted_mp_objects:
-        starting_time_2 = item.latest_finish - + datetime.timedelta(hours=item.runtime)
-        print(starting_time_2)
-        finishing_time = item.latest_finish
-        print(finishing_time)
-        mp_array.append(['Maschine 1', starting_time_2, finishing_time])
-        pass
+        latest_finish = item.latest_finish
+        # print(latest_finish)
+        print(starting_time_old)
+        if (latest_finish > starting_time_old):
+            print("Bin ich im while ?")
+            latest_finish_new = starting_time_old
+        else:
+            pass
 
-    print(mp_array)
+        print("3x hier drin")
+        starting_time_new = latest_finish_new - datetime.timedelta(hours=item.runtime)
+        print(starting_time_new)
+        starting_time_old = starting_time_new
+        # print(type(item.runtime))
+        # print(type(item.latest_finish))
+        # print(starting_time_old)
+        # print(finishing_time)
+        # Maschine = 'Maschine'
+        mp_array.append(['Maschine', starting_time_new.isoformat(), latest_finish_new.isoformat()])
+
+    # print(mp_array)
     context = {
         'da_real_array': mp_array,
         'weekdays': ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],

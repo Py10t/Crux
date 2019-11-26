@@ -14,9 +14,9 @@ class Auftragsobjekt(models.Model):
     """ week divided into 7 x (60*24) = 10080 units for each minute"""
     name = models.CharField(("Auftragsobjekt"), max_length=250, default="Something_name")
     article = models.CharField(("Auftragsobjekt"), max_length=250, default="Something:article")
-    latest_finish = models.DateField(("Lieferdatum"), default=datetime.date.today)
+    latest_finish = models.DateTimeField(("Lieferdatum"), default=datetime.datetime.today)
     runtime = models.BigIntegerField(("Laufzeit"), default=1440)
-    auftrags_kw = models.BigIntegerField(("Laufzeit"), default=1440)
+    auftrags_kw = models.BigIntegerField(("Ziel KW"), default=1440)
     # in case the production already started you want a fixed time and not a calculated
     prod_started = models.BooleanField(("Already started"), default=False)
     starting_time = models.BigIntegerField(("Startzeit"), default=1440)
