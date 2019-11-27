@@ -5,16 +5,9 @@ from bestellung.models import Order
 from maschinenplanung.models import Auftragsobjekt
 import datetime
 from django.utils import timezone
-# Create your views here.
 
 
 def index(request):
-    """renders index view, needs args for rectangle sizes"""
-    day_week_month = [1, 2, 3, 4, 5, 6, 7]
-    return render(request, 'maschinenplanung/index.html', {'articles': Article.objects.all()})
-
-
-def mp(request):
     """gathers data from db.objects and constructs useful objects for the mp"""
     order_obj=Order.objects.filter(order_status="Produktionsauftrag", collection=False)
     print(len(order_obj))
@@ -93,11 +86,10 @@ def mp(request):
         # print(latest_finish)
         print(starting_time_old)
         if (latest_finish > starting_time_old):
-            latest_finish_new = starting_time_old
+            latest_finish_new = starting_time_old - datetime.timedelta(hours=1)
         else:
             pass
 
-        print("3x hier drin")
         starting_time_new = latest_finish_new - datetime.timedelta(hours=item.runtime)
         print(starting_time_new)
         starting_time_old = starting_time_new
@@ -105,8 +97,8 @@ def mp(request):
         # print(type(item.latest_finish))
         # print(starting_time_old)
         # print(finishing_time)
-        # Maschine = 'Maschine'
-        mp_array.append(['Maschine', starting_time_new.isoformat(), latest_finish_new.isoformat()])
+        article_name = str(item.name)
+        mp_array.append([article_name, starting_time_new.isoformat(), latest_finish_new.isoformat()])
 
     # print(mp_array)
     context = {

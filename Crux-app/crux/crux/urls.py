@@ -22,7 +22,7 @@ urlpatterns = [
     path('', include('homepage.urls', namespace='homepage')),
     # path('homepage/', include('homepage.urls', namespace='homepage')),
     path('textdocs/', include('textdocs.urls')),
-    path('maschinenplanung/', include('maschinenplanung.urls')),
+    path('maschinenplanung/', include('maschinenplanung.urls', namespace='maschinenplanung')),
     path('bestellung/', include('bestellung.urls', namespace='bestellung')),
     path('auftrag/', include('auftrag.urls', namespace='auftrag')),
     path('produktionsauftrag/', include('produktionsauftrag.urls', namespace='produktionsauftrag')),

@@ -23,3 +23,37 @@ def index(request):
         'tooling': tooling,
     }
     return render(request, 'stock/index.html', context)
+
+def artikel(request):
+    article = ArticleTable(Article.objects.all())
+    print("immer hier")
+
+    context = {
+        'article': article,
+    }
+    return render(request, 'stock/artikel.html', context)
+
+def material(request):
+    material = MaterialTable(Material.objects.all())
+
+    context = {
+        'material': material,
+    }
+    return render(request, 'stock/material.html', context)
+
+def maschinen(request):
+    moulding_machine = MouldingMachineTable(MouldingMachine.objects.all())
+
+    context = {
+        'moulding_machine': moulding_machine,
+    }
+    return render(request, 'stock/maschinen.html', context)
+
+def kunden(request):
+
+    customer = CustomerTable(Customer.objects.all())
+
+    context = {
+        'customer': customer,
+    }
+    return render(request, 'stock/kunden.html', context)

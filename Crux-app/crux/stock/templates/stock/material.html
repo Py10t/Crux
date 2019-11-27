@@ -1,0 +1,20 @@
+{% extends 'stock/base.html' %}
+
+{% load render_table from django_tables2 %}
+
+<body>
+
+<!--<div class="col-2">-->
+{% block body %}
+
+<main class="content">
+    <div>
+        <h3> Material</h3>
+
+    {% render_table material %}
+
+  </div>
+</main>
+
+</body>
+{% endblock %}
