@@ -4,7 +4,7 @@
 <!--<link rel="stylesheet" type="text/css" href="{% static 'maschinenplanung/style.css' %}">-->
 
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{% static 'js/loader.js' %}"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['timeline']});
     google.charts.setOnLoadCallback(drawChart);
@@ -12,17 +12,19 @@
     function drawChart() {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Maschine');
+      data.addColumn({type: 'string', id: 'Name'});
       data.addColumn('date', 'Season Start Date');
       data.addColumn('date', 'Season End Date');
 
       data.addRows([
       {% for item in da_real_array %}
-        ['{{ item.0 }}', new Date('{{ item.1 }}'), new Date('{{ item.2 }}')],
+        ['Maschine 1', '{{item.0}}', new Date('{{ item.1 }}'), new Date('{{ item.2 }}')],
       {% endfor %}
       ]);
 
       var options = {
         height: 450,
+        legend: 'none' ,
         timeline: {
           groupByRowLabel: true
         }
