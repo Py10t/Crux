@@ -62,6 +62,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+STATICFILES_DIRS = [
+    "/homepage/static",
+]
+
 ROOT_URLCONF = 'crux.urls'
 
 TEMPLATES = [
@@ -133,4 +137,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

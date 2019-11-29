@@ -1,24 +1,28 @@
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Einzelbestellungen
-        </a>
-      </h4>
+  <div class="card-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-heading" role="tab" id="headingOne">
+        <h4 class="card-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Einzelbestellungen
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="collapse-off" data-parent="#accordion">
+        <div class="card-body">
+  {% for field in form %}
+<!--          <div class="input-group mb-3">-->
+<!--            <div class="col-sm-offset-2 col-sm-10">-->
+<!--              <span class="text-danger small">{{ field.errors }}</span>-->
+<!--            </div>-->
+<!--            <span class="input-group-text">{{ field.label_tag }}</span>-->
+<!--            <input type="text" class="form-control">{{ field }}-->
+<!--          </div>-->
+          <div class="form-group mb-3">
+            <label for="formGroupExampleInput">{{ field.label_tag }}</label>
+            <div class="col-sm-10" id="formGroupExampleInput">{{ field }}</div>
+          </div>
+  {% endfor %}
+          </div>
+      </div>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-{% for field in form %}
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <span class="text-danger small">{{ field.errors }}</span>
-        </div>
-        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
-        <div class="col-sm-10">{{ field }}</div>
-    </div>
-{% endfor %}
-                </div>
-    </div>
-  </div>
   </div>

@@ -1,12 +1,15 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+{% comment %}{% endcomment %}
+
 {% block body %}
 <div class="container-fluid">
 
     <div class="row">
 
         <div class="col-sm-12 col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-body">
                     <h3>Eine neue Bestellung eingeben</h3>
                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -22,8 +25,8 @@
         </div>
 
         <div class="col-sm-12 col-md-5">
-            <div class="panel panel-default">
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-body">
                     <h3>Wie erstelle ich einen Auftrag ?</h3>
                     <ul>
                         <li>Wählen Sie einen Artikel aus der Liste.</li>
