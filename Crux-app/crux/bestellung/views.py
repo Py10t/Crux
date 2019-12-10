@@ -45,6 +45,7 @@ def create_order(request):
         obj = Nummernkreise.objects.get(pk=1)
         obj.order_number +=1
         order.order_number_int = obj.order_number
+        print(order)
 
         order.save()
         obj.save()
@@ -55,6 +56,7 @@ def create_order(request):
     context = {
         "form": form,
     }
+    print(context)
     return render(request, 'bestellung/order_form.html', context)
 
 def create_collective_order(request):

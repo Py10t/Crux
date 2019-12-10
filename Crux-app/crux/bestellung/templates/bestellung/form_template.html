@@ -9,19 +9,23 @@
       </div>
       <div id="collapseOne" class="collapse-off" data-parent="#accordion">
         <div class="card-body">
+
+
   {% for field in form %}
-<!--          <div class="input-group mb-3">-->
+          <div class="form-group mb-3">
 <!--            <div class="col-sm-offset-2 col-sm-10">-->
 <!--              <span class="text-danger small">{{ field.errors }}</span>-->
 <!--            </div>-->
 <!--            <span class="input-group-text">{{ field.label_tag }}</span>-->
 <!--            <input type="text" class="form-control">{{ field }}-->
 <!--          </div>-->
-          <div class="form-group mb-3">
-            <label for="formGroupExampleInput">{{ field.label_tag }}</label>
-            <div class="col-sm-10" id="formGroupExampleInput">{{ field }}</div>
+
+            <label for='{{ field.label_tag }}'>{{ field.label_tag }}</label>
+            <div type="text" id='{{ field.label_tag }}'>{{ field }}</div>
           </div>
+
   {% endfor %}
+
           </div>
       </div>
     </div>
