@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.urls import reverse
+from django import forms
 from stock.models import Nummernkreise, Customer, Article
 
 # Create your models here.

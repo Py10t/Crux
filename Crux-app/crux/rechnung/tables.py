@@ -12,3 +12,5 @@ class OrderTable(tables.Table):
 
     my_column = tables.TemplateColumn(verbose_name=('Optionen'),
                                       template_name='rechnung/next_button.html')
+    my_column2 = tables.TemplateColumn(verbose_name=('Auswählen'),
+                                      template_name='rechnung/checkbox.html')

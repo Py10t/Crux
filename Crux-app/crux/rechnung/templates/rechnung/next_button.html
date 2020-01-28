@@ -1,4 +1,4 @@
-<div>
-  <a class="btn btn-info btn-sm" href="{% url 'rechnung:update_rechnung' record.id %}">Überführen</a>
-  <a class="btn btn-info btn-sm" href="{% url 'rechnung:generate_invoice' record.id %}">Anzeigen</a>
+<div class="btn-group">
+  <a class="btn btn-outline-info btn-sm" href="{% url 'rechnung:update_rechnung' record.id %}">Überführen</a>
+  <a class="btn btn-outline-info btn-sm" href="{% url 'rechnung:generate_invoice' record.id %}">Anzeigen</a>
 </div>
