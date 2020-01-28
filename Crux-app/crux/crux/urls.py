@@ -28,7 +28,6 @@ urlpatterns = [
     path('produktionsauftrag/', include('produktionsauftrag.urls', namespace='produktionsauftrag')),
     path('lieferschein/', include('lieferschein.urls', namespace='lieferschein')),
     path('rechnung/', include('rechnung.urls', namespace='rechnung')),
-    path('polls/', include('polls.urls')),
     path('aktuelles/', include('aktuelles.urls')),
     path('stock/', include('stock.urls', namespace='stock')),
     path('admin/', admin.site.urls),

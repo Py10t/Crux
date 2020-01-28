@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'lieferschein.apps.LieferscheinConfig',
     'rechnung.apps.RechnungConfig',
     'stock.apps.StockConfig',
-    'polls.apps.PollsConfig',
     'aktuelles.apps.AktuellesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
